@@ -1,0 +1,7 @@
+source ~/.screenrc
+
+screen -t bzr 3 
+screen -t ipython 4 ipython
+screen -t Web 5 python $HOME/openerp/client-web/groupes/openerp-web.py
+screen -t Client 6 python $HOME/openerp/client/bin/openerp-client.py
+screen -t Serveur 2 
