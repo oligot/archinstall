@@ -48,9 +48,9 @@ alias lsa='ls -ld .*'
 
 # Global aliases -- These do not have to be
 # at the beginning of the command line.
-alias -g L='| less'
+alias -g L='| less -R'
 alias -g G='| grep'
-alias -g V='| vim -'
+alias -g V='| /usr/share/vim/vimcurrent/macros/less.sh -'
 
 
 # history settings
@@ -66,10 +66,6 @@ DIRSTACKSIZE=8
 
 eval `dircolors -b ~/.dircolors`
 export ZLS_COLORS=$LS_COLORS
-
-#Proxy
-#export http_proxy=http://192.168.105.30:8080
-#export https_proxy=$http_proxy
 
 #Pager
 export LESS_TERMCAP_mb=$'\E[01;31m'    # début de blink
@@ -134,7 +130,7 @@ xdvi() { command xdvi ${*:-*.dvi(om[1])} }
 zstyle ':completion:*:*:xdvi:*' menu yes select
 zstyle ':completion:*:*:xdvi:*' file-sort time
 
-#bindkey -v                 # vim key bindings
+bindkey -e                 # emacs key bindings
 
 bindkey '^R'    history-incremental-search-backward
 bindkey '^[[3~' delete-char

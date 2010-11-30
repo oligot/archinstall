@@ -9,6 +9,3 @@ vbell off
 # bind F11 to previous and F12 to next
 bindkey -k F1 prev
 bindkey -k F2 next
-
-screen -t zsh 0
-screen -t vim 1 vim
