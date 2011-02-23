@@ -1,9 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =7
-let g:netrw_dirhist_1='/home/oli/.vim/ftplugin'
-let g:netrw_dirhist_2='/home/oli/openerp/addons-community/groupes'
-let g:netrw_dirhist_3='/home/oli/openerp/addons-community/groupes/hr_medical'
-let g:netrw_dirhist_4='/home/oli/openerp/addons-community/groupes'
-let g:netrw_dirhist_5='/home/oli/openerp/addons-community/groupes/hrself'
-let g:netrw_dirhist_6='/home/oli/openerp/client-web/trunk/addons/openerp/controllers/templates'
-let g:netrw_dirhist_7='/home/oli/.zsh'

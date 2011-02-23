@@ -18,8 +18,15 @@ esac
 
 # Aliases
 #alias click_n_prove='$HOME/unif/memoire/tools/Click_n_Prove.V2.0/Click_n_Prove'
+alias c='python bin/openerp-client.py'
+alias cda='cd ~/openerp/addons/current'
+alias cdc='cd ~/openerp/client/current'
+alias cdd='cd ~/openerp/doc/trunk'
+alias cdh='cd ~/openerp/addons-hrself/current'
+alias cds='cd ~/openerp/server/groupes-6.0'
+alias cdw='cd ~/openerp/client-web/groupes-6.0'
 alias cp='nocorrect cp -i' # no spelling correction on cp
-alias d='bzr diff V'
+alias d='bzr cdiff L'
 alias df='df -h'
 alias dh='dirs -v'
 alias dodo='sudo /sbin/shutdown -h now'
@@ -31,13 +38,16 @@ alias hibernate='sudo hibernate'
 alias la='ls -a'
 alias l='ls -lh'
 alias ls="ls -F --color=auto"
+alias m='bzr missing'
 alias mkdir='nocorrect mkdir' # no spelling correction on mkdir
 alias mv='nocorrect mv -i' # no spelling correction on mv
-alias o='python $HOME/openerp/server/groupes/bin/openerp-server.py'
+alias o='python2.5 bin/openerp-server.py -c .openerp_serverrc'
+alias p='bzr push'
 alias rm='rm -i'
 alias s='bzr st'
-alias sft='noglob find . -name \*~?~ -exec rm -f {} +'
+alias sft="noglob find . -name '*.~*~' -exec rm -f {} +"
 alias so='screen -S openerp -c $HOME/.screenrc.openerp'
+alias w='python2.5 openerp-web.py'
 
 # List only directories and symbolic
 # links that point to directories
@@ -48,9 +58,10 @@ alias lsa='ls -ld .*'
 
 # Global aliases -- These do not have to be
 # at the beginning of the command line.
-alias -g L='| less -R'
+alias -g L='| less'
+alias -g LV="| /usr/share/vim/vimcurrent/macros/less.sh --cmd ':set filetype=diff' -"
 alias -g G='| grep'
-alias -g V='| /usr/share/vim/vimcurrent/macros/less.sh -'
+alias -g V='| vim -'
 
 
 # history settings
@@ -67,7 +78,11 @@ DIRSTACKSIZE=8
 eval `dircolors -b ~/.dircolors`
 export ZLS_COLORS=$LS_COLORS
 
+#Proxy
+export http_proxy=''
+
 #Pager
+export LESS=-R
 export LESS_TERMCAP_mb=$'\E[01;31m'    # début de blink
 export LESS_TERMCAP_md=$'\E[01;31m'    # début de gras
 export LESS_TERMCAP_me=$'\E[0m'        # fin
@@ -102,9 +117,9 @@ export LOG4E=$HOME/eiffel/log4e
 export VAMPEER=$HOME/eiffel/vampeer
 
 # Path
-export PATH="$PATH:/home/oli/bin:/opt/e17/bin:/usr/local/bin:$ISE_EIFFEL/studio/spec/$ISE_PLATFORM/bin:$GOBO/bin"
+export PATH="$PATH:/home/oli/scripts:/opt/e17/bin:/usr/local/bin:$ISE_EIFFEL/studio/spec/$ISE_PLATFORM/bin:$GOBO/bin"
 export MANPATH=$MANPATH:/usr/local/share/man
-export PYTHONPATH="/home/oli/bin:/home/oli/openerp/server/groupes/bin"
+export PYTHONPATH="/home/oli/scripts:/home/oli/openerp/server/trunk"
 
 # Expansion options
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
