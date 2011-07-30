@@ -17,7 +17,6 @@ case $TERM in
 esac
 
 # Aliases
-#alias click_n_prove='$HOME/unif/memoire/tools/Click_n_Prove.V2.0/Click_n_Prove'
 alias c='python bin/openerp-client.py'
 alias cda='cd ~/openerp/addons/current'
 alias cdc='cd ~/openerp/client/current'
@@ -32,9 +31,6 @@ alias dh='dirs -v'
 alias dodo='sudo /sbin/shutdown -h now'
 alias du='du -h'
 alias grep='grep --color=auto'
-alias h='history'
-#alias history='fc -l 1'
-alias hibernate='sudo hibernate'
 alias la='ls -a'
 alias l='ls -lh'
 alias ls="ls -F --color=auto"
@@ -45,8 +41,7 @@ alias o='python2.5 bin/openerp-server.py -c .openerp_serverrc'
 alias p='bzr push'
 alias rm='rm -i'
 alias s='bzr st'
-alias sft="noglob find . -name '*.~*~' -exec rm -f {} +"
-alias so='screen -S openerp -c $HOME/.screenrc.openerp'
+alias sft='noglob find . -name \*~?~ -exec rm -f {} +'
 alias w='python2.5 openerp-web.py'
 
 # List only directories and symbolic
@@ -63,6 +58,8 @@ alias -g LV="| /usr/share/vim/vimcurrent/macros/less.sh --cmd ':set filetype=dif
 alias -g G='| grep'
 alias -g V='| vim -'
 
+# Suffix Aliases
+alias -s pdf="apvlv "
 
 # history settings
 HISTFILE=~/.zshhistory
@@ -75,7 +72,7 @@ LISTMAX=0
 DIRSTACKSIZE=8
 
 
-eval `dircolors -b ~/.dircolors`
+#eval `dircolors -b ~/.dircolors`
 export ZLS_COLORS=$LS_COLORS
 
 #Proxy
@@ -98,10 +95,13 @@ export BROWSER="firefox"
 #mpd
 export MPD_HOST="lateralus"
 
+#mail
+export MAIL=/var/spool/mail/$USER
+
 #Eiffel
-export ISE_EIFFEL=$HOME/eiffel/Eiffel63
+export ISE_EIFFEL=$HOME/eiffel/Eiffel68
 export ISE_PLATFORM=linux-x86
-export GOBO=$HOME/eiffel/gobo
+export GOBO=$HOME/eiffel/gobo.git
 export GOBO_CC=gcc
 export GOBO_EIFFEL=ise
 export GOBO_OS=unix
@@ -114,12 +114,15 @@ export ECURSES=$SAFE_LIB/ecurses
 export ECLI=$SAFE_LIB/ecli
 export EPOM=$SAFE_LIB/epom
 export LOG4E=$HOME/eiffel/log4e
+export GOANNA=$HOME/eiffel/goanna
+export EPOSIX=$HOME/eiffel/eposix-3.2.1
 export VAMPEER=$HOME/eiffel/vampeer
+export ERL_G=$HOME/eiffel/erl_g
 
 # Path
-export PATH="$PATH:/home/oli/scripts:/opt/e17/bin:/usr/local/bin:$ISE_EIFFEL/studio/spec/$ISE_PLATFORM/bin:$GOBO/bin"
+export PATH="$PATH:/home/oli/scripts:/opt/e17/bin:/usr/local/bin:$ISE_EIFFEL/studio/spec/$ISE_PLATFORM/bin:$GOBO/bin:$ERL_G/bin"
 export MANPATH=$MANPATH:/usr/local/share/man
-export PYTHONPATH="/home/oli/scripts:/home/oli/openerp/server/trunk"
+export PYTHONPATH="/opt/e17/lib/python2.6/site-packages:/home/oli/scripts:/home/oli/openerp/server/groupes/bin"
 
 # Expansion options
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
@@ -169,3 +172,5 @@ setopt			   \
 
 unsetopt ignore_eof	   \
 	list_ambiguous
+
+source /etc/profile.d/autojump.zsh
