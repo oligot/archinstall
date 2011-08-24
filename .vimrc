@@ -57,7 +57,7 @@ syntax enable
 
 if has("gui_running")
 	set guioptions-=T
-  colorscheme darkblue
+  colorscheme koehler
 endif
 
 "Highlight current

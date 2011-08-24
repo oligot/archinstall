@@ -24,22 +24,22 @@ alias cdd='cd ~/openerp/doc/trunk'
 alias cdh='cd ~/openerp/addons-hrself/current'
 alias cds='cd ~/openerp/server/groupes-6.0'
 alias cdw='cd ~/openerp/client-web/groupes-6.0'
-alias cp='nocorrect cp -i' # no spelling correction on cp
+alias cp='nocorrect cp' # no spelling correction on cp
 alias d='bzr cdiff L'
 alias df='df -h'
 alias dh='dirs -v'
 alias dodo='sudo /sbin/shutdown -h now'
 alias du='du -h'
 alias grep='grep --color=auto'
+alias h='sudo hibernate; sudo /etc/init.d/connman restart; enlightenment_remote -module-disable connman; enlightenment_remote -module-enable connman'
 alias la='ls -a'
 alias l='ls -lh'
 alias ls="ls -F --color=auto"
 alias m='bzr missing'
 alias mkdir='nocorrect mkdir' # no spelling correction on mkdir
-alias mv='nocorrect mv -i' # no spelling correction on mv
+alias mv='nocorrect mv' # no spelling correction on mv
 alias o='python2.5 bin/openerp-server.py -c .openerp_serverrc'
 alias p='bzr push'
-alias rm='rm -i'
 alias s='bzr st'
 alias sft='noglob find . -name \*~?~ -exec rm -f {} +'
 alias w='python2.5 openerp-web.py'
@@ -122,7 +122,7 @@ export ERL_G=$HOME/eiffel/erl_g
 # Path
 export PATH="$PATH:/home/oli/scripts:/opt/e17/bin:/usr/local/bin:$ISE_EIFFEL/studio/spec/$ISE_PLATFORM/bin:$GOBO/bin:$ERL_G/bin"
 export MANPATH=$MANPATH:/usr/local/share/man
-export PYTHONPATH="/opt/e17/lib/python2.6/site-packages:/home/oli/scripts:/home/oli/openerp/server/groupes/bin"
+export PYTHONPATH="/opt/e17/lib/python2.6/site-packages:/home/oli/scripts:/home/oli/openerp/server/trunk:/home/oli/tryton/trytond"
 
 # Expansion options
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
