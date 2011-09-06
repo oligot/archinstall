@@ -22,7 +22,7 @@ alias cda='cd ~/openerp/addons/current'
 alias cdc='cd ~/openerp/client/current'
 alias cdd='cd ~/openerp/doc/trunk'
 alias cdh='cd ~/openerp/hrself-addons/current'
-alias cds='cd ~/openerp/server/groupes-6.0'
+alias cds='cd ~/openerp/server/current'
 alias cdw='cd ~/openerp/client-web/current'
 alias cp='nocorrect cp' # no spelling correction on cp
 alias d='bzr cdiff L'
@@ -38,7 +38,7 @@ alias ls="ls -F --color=auto"
 alias m='bzr missing'
 alias mkdir='nocorrect mkdir' # no spelling correction on mkdir
 alias mv='nocorrect mv' # no spelling correction on mv
-alias o='python2.5 bin/openerp-server.py -c .openerp_serverrc'
+alias o='python2.5 bin/openerp-server.py'
 alias p='bzr push'
 alias s='bzr st'
 alias sft='noglob find . -name \*~?~ -exec rm -f {} +'
