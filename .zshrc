@@ -120,7 +120,7 @@ export VAMPEER=$HOME/eiffel/vampeer
 export ERL_G=$HOME/eiffel/erl_g
 
 # Path
-export PATH="$PATH:/home/oli/scripts:/opt/e17/bin:/usr/local/bin:$ISE_EIFFEL/studio/spec/$ISE_PLATFORM/bin:$GOBO/bin:$ERL_G/bin"
+export PATH="$PATH:/home/oli/scripts:/opt/e17/bin:/usr/local/bin:/usr/lib/tracker:$ISE_EIFFEL/studio/spec/$ISE_PLATFORM/bin:$GOBO/bin:$ERL_G/bin"
 export MANPATH=$MANPATH:/usr/local/share/man
 export PYTHONPATH="/opt/e17/lib/python2.6/site-packages:/home/oli/scripts:/home/oli/openerp/server/trunk:/home/oli/tryton/trytond"
 
