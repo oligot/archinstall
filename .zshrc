@@ -31,7 +31,7 @@ alias dh='dirs -v'
 alias dodo='sudo /sbin/shutdown -h now'
 alias du='du -h'
 alias grep='grep --color=auto'
-alias h='sudo hibernate; sudo /etc/init.d/connman restart; enlightenment_remote -module-disable connman; enlightenment_remote -module-enable connman'
+alias h='sudo pm-hibernate'
 alias la='ls -a'
 alias l='ls -lh'
 alias ls="ls -F --color=auto"
@@ -79,7 +79,7 @@ export ZLS_COLORS=$LS_COLORS
 export http_proxy=''
 
 #Pager
-export LESS=-R
+export LESS=-FSRX
 export LESS_TERMCAP_mb=$'\E[01;31m'    # début de blink
 export LESS_TERMCAP_md=$'\E[01;31m'    # début de gras
 export LESS_TERMCAP_me=$'\E[0m'        # fin
@@ -122,7 +122,7 @@ export ERL_G=$HOME/eiffel/erl_g
 # Path
 export PATH="$PATH:/home/oli/scripts:/opt/e17/bin:/usr/local/bin:/usr/lib/tracker:$ISE_EIFFEL/studio/spec/$ISE_PLATFORM/bin:$GOBO/bin:$ERL_G/bin"
 export MANPATH=$MANPATH:/usr/local/share/man
-export PYTHONPATH="/opt/e17/lib/python2.6/site-packages:/home/oli/scripts:/home/oli/openerp/server/trunk:/home/oli/tryton/trytond"
+export PYTHONPATH="/opt/e17/lib/python2.7/site-packages:/home/oli/scripts:/home/oli/openerp/server/trunk:/home/oli/tryton/trytond"
 
 # Expansion options
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
@@ -174,3 +174,5 @@ unsetopt ignore_eof	   \
 	list_ambiguous
 
 source /etc/profile.d/autojump.zsh
+
+keychain -q id_rsa
