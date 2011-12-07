@@ -59,7 +59,7 @@ alias -g G='| grep'
 alias -g V='| vim -'
 
 # Suffix Aliases
-alias -s pdf="apvlv "
+alias -s pdf="zathura "
 
 # history settings
 HISTFILE=~/.zshhistory
