@@ -99,7 +99,7 @@ export MPD_HOST="lateralus"
 export MAIL=/var/spool/mail/$USER
 
 #Eiffel
-export ISE_EIFFEL=$HOME/eiffel/Eiffel68
+export ISE_EIFFEL=$HOME/eiffel/Eiffel70
 export ISE_PLATFORM=linux-x86
 export GOBO=$HOME/eiffel/gobo.git
 export GOBO_CC=gcc
