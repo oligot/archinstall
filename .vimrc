@@ -21,7 +21,7 @@ filetype indent on
 "Set to auto read when a file is changed from the outside
 set autoread
 
-" Keep a .viminfo file.
+"Keep a .viminfo file.
 set viminfo='1000,f1,<500  
 
 "Set mapleader
@@ -41,9 +41,9 @@ map <leader>e :e! ~/.vimrc<cr>
 "When .vimrc is edited, reload it
 autocmd! bufwritepost vimrc source ~/.vimrc
 
-" When editing a file, always jump to the last known cursor position.
-" Don't do it when the position is invalid or when inside an event handler
-" (happens when dropping a file on gvim).
+"When editing a file, always jump to the last known cursor position.
+"Don't do it when the position is invalid or when inside an event handler
+"(happens when dropping a file on gvim).
 autocmd BufReadPost *
 	 \ if line("'\"") > 0 && line("'\"") <= line("$") |
 	 \   exe "normal! g`\"" |
@@ -170,46 +170,46 @@ set tw=500
    set wrap
 
 
-" Set grep program to ack-grep
+"Set grep program to ack-grep
 set grepprg=ack-grep
 
-" When doing tab completion, give the following files lower priority. You may
-" wish to set 'wildignore' to completely ignore files, and 'wildmenu' to enable
-" enhanced tab completion. These can be done in the user vimrc file.
+"When doing tab completion, give the following files lower priority. You may
+"wish to set 'wildignore' to completely ignore files, and 'wildmenu' to enable
+"enhanced tab completion. These can be done in the user vimrc file.
 set suffixes+=.info,.aux,.log,.dvi,.bbl,.out,.o,.lo
 
-" When displaying line numbers, don't use an annoyingly wide number column. This
-" doesn't enable line numbers -- :set number will do that. The value given is a
-" minimum width to use for the number column, not a fixed size.
+"When displaying line numbers, don't use an annoyingly wide number column. This
+"doesn't enable line numbers -- :set number will do that. The value given is a
+"minimum width to use for the number column, not a fixed size.
 if v:version >= 700
 	set numberwidth=3
 endif
-" }}}
+"}}}
 
-" {{{ Syntax highlighting settings
-" Switch syntax highlighting on, when the terminal has colors
-" Also switch on highlighting the last used search pattern.
+"{{{ Syntax highlighting settings
+"Switch syntax highlighting on, when the terminal has colors
+"Also switch on highlighting the last used search pattern.
 if &t_Co > 2 || has("gui_running")
 	syntax on
 	set hlsearch
 endif
-" }}}
+"}}}
 
 
 set autochdir
 
-" Tlist
+"Tlist
 let Tlist_Show_One_File=1
 let Tlist_Use_Right_Window=1
 let Tlist_Exit_OnlyWindow = 1
 let Tlist_GainFocus_On_ToggleOpen = 1
 let Tlist_Sort_Type="name"
-" Toggle the taglist window 
+"Toggle the taglist window 
 nnoremap <silent> <F9> :TlistToggle<CR>
 "Update time
 set updatetime=1000
 
-" Ctags
+"Ctags
 nnoremap <silent> <F3> :bd<CR>
 nnoremap <silent> <F11> :!ctags -R --languages=c++ --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
 
@@ -217,7 +217,7 @@ nnoremap <silent> <F11> :!ctags -R --languages=c++ --c++-kinds=+p --fields=+iaS 
 "comments
 set comments=sl:/*,mb:*,elx:*/
 
-" Minibufexpl
+"Minibufexpl
 let g:miniBufExplMapWindowNavVim = 1
 let g:miniBufExplMapWindowNavArrows = 1
 let g:miniBufExplMapCTabSwitchBufs = 1
@@ -229,7 +229,7 @@ nnoremap <silent> <leader>k :bprevious<CR>
 nnoremap <silent> <leader>l :bnext<CR>
 nnoremap <silent> <leader>, :BufExplorer<CR>
 
-"" Eiffel syntax highlighting 
+"Eiffel syntax highlighting 
 let eiffel_ise=1
 let eiffel_strict=1
 
@@ -238,3 +238,15 @@ cabbrev lvim
       \ *<C-R>=(expand("%:e")=="" ? "" : ".".expand("%:e"))<CR>
       \ <Bar> lw
       \ <C-Left><C-Left><C-Left>
+
+"Ranger
+fun! RangerChooser()
+  silent !ranger --choosefile=/tmp/chosenfile `[ -z '%' ] && echo -n . || dirname %`
+  if filereadable('/tmp/chosenfile')
+    exec 'edit ' . system('cat /tmp/chosenfile')
+    call system('rm /tmp/chosenfile')
+  endif
+  redraw!
+endfun
+
+map <leader>r :call RangerChooser()<CR>
