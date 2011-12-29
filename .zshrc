@@ -29,6 +29,7 @@ alias l='ls -lh'
 alias ls="ls -F --color=auto"
 alias mkdir='nocorrect mkdir' # no spelling correction on mkdir
 alias mv='nocorrect mv' # no spelling correction on mv
+alias s='sudo pm-suspend'
 alias sft='noglob find . -name \*~?~ -exec rm -f {} +'
 
 # List only directories and symbolic
