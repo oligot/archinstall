@@ -176,3 +176,5 @@ unsetopt ignore_eof	   \
 source /etc/profile.d/autojump.zsh
 
 keychain -q id_rsa
+
+source $HOME/code/resty/resty

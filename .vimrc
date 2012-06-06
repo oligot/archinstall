@@ -149,6 +149,7 @@ augroup filetype
 	au BufRead *.m        set ft=mercury
 augroup END
 
+autocmd BufNewFile,BufRead *.json set ft=javascript
 
 set smarttab
 set lbr
