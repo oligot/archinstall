@@ -104,6 +104,7 @@ export GOANNA=$HOME/eiffel/goanna
 export EPOSIX=$HOME/eiffel/eposix-3.2.1
 export VAMPEER=$HOME/eiffel/vampeer
 export ERL_G=$HOME/eiffel/erl_g
+export EPM_LIBRARIES=$HOME/epm_libraries
 
 # Path
 export PATH="$PATH:/home/oli/scripts:/opt/e17/bin:/usr/local/bin:/usr/lib/tracker:$ISE_EIFFEL/studio/spec/$ISE_PLATFORM/bin:$GOBO/bin:$ERL_G/bin"
