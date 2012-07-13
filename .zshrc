@@ -87,33 +87,33 @@ export MPD_HOST="lateralus"
 export MAIL=/var/spool/mail/$USER
 
 #Eiffel
-export ISE_EIFFEL=$HOME/eiffel/Eiffel70
-export ISE_PLATFORM=linux-x86
-export GOBO=$HOME/eiffel/gobo.git
+export ISE_EIFFEL=$HOME/eiffel/Eiffel
+export ISE_PLATFORM=linux-x86-64
+export GOBO=$HOME/eiffel/gobo
 export GOBO_CC=gcc
 export GOBO_EIFFEL=ise
 export GOBO_OS=unix
 export EXTENSION_LIBRARIES=$HOME/eiffel/forum
 export ISE_LIBRARIES=$EXTENSION_LIBRARIES/ise
 export SAFE=$EXTENSION_LIBRARIES/safe
-#export SAFE_KERNEL=$SAFE/kernel
-export SAFE_KERNEL=$HOME/eiffel/safe.git/kernel
+export SAFE_KERNEL=$SAFE/kernel
+#export SAFE_KERNEL=$HOME/eiffel/safe/kernel
 export EFM=$SAFE_LIB/efm
 export ECURSES=$SAFE_LIB/ecurses
-#export ECLI=$SAFE/ecli
-export ECLI=$HOME/eiffel/safe.git/ecli
+export ECLI=$SAFE/ecli
+#export ECLI=$HOME/eiffel/safe/ecli
 export EPOM=$SAFE/epom
 export LOG4E=$HOME/eiffel/forum/goanna-origo/log4e
 export GOANNA=$HOME/eiffel/forum/goanna-origo/goanna
-export EPOSIX=$HOME/eiffel/forum/eposix
+export EPOSIX=$EXTENSION_LIBRARIES/eposix
 export VAMPEER=$HOME/eiffel/vampeer
-export ERL_G=$HOME/eiffel/erl_g.git
+export ERL_G=$HOME/eiffel/erl_g
 export PROJECT_SOURCE=$HOME/eiffel/systeme_controle
-export EWF=$HOME/eiffel/Eiffel-Web-Framework
+export EWF=$HOME/eiffel/EWF
 export EPM_LIBRARIES=$HOME/epm_libraries
 
 # Path
-export PATH="$PATH:/home/oli/scripts:/opt/e17/bin:/usr/local/bin:/usr/lib/tracker:$ISE_EIFFEL/studio/spec/$ISE_PLATFORM/bin:$GOBO/bin:$ERL_G/bin:$PROJECT_SOURCE/COMPOSANTS/outils/bin"
+export PATH="$PATH:$HOME/scripts:/opt/e17/bin:/usr/local/bin:/usr/lib/tracker:$ISE_EIFFEL/studio/spec/$ISE_PLATFORM/bin:$GOBO/bin:$ERL_G/bin:$PROJECT_SOURCE/COMPOSANTS/outils/bin"
 export MANPATH=$MANPATH:/usr/local/share/man
 export PYTHONPATH="/opt/e17/lib/python2.7/site-packages:/home/oli/scripts:/home/oli/openerp/server/trunk:/home/oli/tryton/trytond"
 
@@ -166,7 +166,7 @@ setopt			   \
 unsetopt ignore_eof	   \
 	list_ambiguous
 
-source /etc/profile.d/autojump.zsh
+source /usr/share/autojump/autojump.zsh
 
 keychain -q id_rsa
 
