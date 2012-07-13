@@ -111,7 +111,7 @@ export EWF=$HOME/eiffel/EWF
 export EPM_LIBRARIES=$HOME/epm_libraries
 
 # Path
-export PATH="$PATH:$HOME/scripts:/opt/e17/bin:/usr/local/bin:/usr/lib/tracker:$ISE_EIFFEL/studio/spec/$ISE_PLATFORM/bin:$GOBO/bin:$ERL_G/bin:$PROJECT_SOURCE/COMPOSANTS/outils/bin"
+export PATH="/opt/local/bin:/opt/local/sbin:$PATH:$HOME/scripts:/opt/e17/bin:/usr/local/bin:/usr/lib/tracker:$ISE_EIFFEL/studio/spec/$ISE_PLATFORM/bin:$GOBO/bin:$ERL_G/bin:$PROJECT_SOURCE/COMPOSANTS/outils/bin"
 export MANPATH=$MANPATH:/usr/local/share/man
 export PYTHONPATH="/opt/e17/lib/python2.7/site-packages:/home/oli/scripts:/home/oli/openerp/server/trunk:/home/oli/tryton/trytond"
 
@@ -164,8 +164,17 @@ setopt			   \
 unsetopt ignore_eof	   \
 	list_ambiguous
 
-source /usr/share/autojump/autojump.zsh
+if [ -f /etc/profile.d/autojump.sh ]; then
+    . /etc/profile.d/autojump.sh
+fi
+if [ -f /opt/local/etc/profile.d/autojump.sh ]; then
+    . /opt/local/etc/profile.d/autojump.sh
+fi
 
-keychain -q id_rsa
+if [ $commands[keychain] ]; then
+    keychain -q id_rsa
+fi
 
-source $HOME/code/resty/resty
+if [ -f $HOME/code/resty/resty ]; then
+    . $HOME/code/resty/resty
+fi
