@@ -164,8 +164,8 @@ setopt			   \
 unsetopt ignore_eof	   \
 	list_ambiguous
 
-if [ -f /etc/profile.d/autojump.sh ]; then
-    . /etc/profile.d/autojump.sh
+if [ -f /usr/share/autojump/autojump.sh ]; then
+    . /usr/share/autojump/autojump.sh
 fi
 if [ -f /opt/local/etc/profile.d/autojump.sh ]; then
     . /opt/local/etc/profile.d/autojump.sh
