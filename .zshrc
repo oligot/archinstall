@@ -108,12 +108,11 @@ export VAMPEER=$HOME/eiffel/vampeer
 export ERL_G=$HOME/eiffel/erl_g
 export PROJECT_SOURCE=$HOME/eiffel/systeme_controle
 export EWF=$HOME/eiffel/EWF
-export EPM_LIBRARIES=$HOME/epm_libraries
 
 # Path
-export PATH="/opt/local/bin:/opt/local/sbin:$PATH:$HOME/scripts:/opt/e17/bin:/usr/local/bin:/usr/lib/tracker:$ISE_EIFFEL/studio/spec/$ISE_PLATFORM/bin:$GOBO/bin:$ERL_G/bin:$PROJECT_SOURCE/COMPOSANTS/outils/bin"
+export PATH="/opt/local/bin:/opt/local/sbin:$PATH:$HOME/bin:/opt/e17/bin:/usr/local/bin:/usr/lib/tracker:$ISE_EIFFEL/studio/spec/$ISE_PLATFORM/bin:$GOBO/bin:$ERL_G/bin:$PROJECT_SOURCE/COMPOSANTS/outils/bin"
 export MANPATH=$MANPATH:/usr/local/share/man
-export PYTHONPATH="/opt/e17/lib/python2.7/site-packages:/home/oli/scripts:/home/oli/openerp/server/trunk:/home/oli/tryton/trytond"
+export PYTHONPATH="/opt/e17/lib/python2.7/site-packages:/home/oli/bin:/home/oli/openerp/server/trunk:/home/oli/tryton/trytond"
 
 # Expansion options
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
@@ -175,6 +174,6 @@ if [ $commands[keychain] ]; then
     keychain -q id_rsa
 fi
 
-if [ -f $HOME/code/resty/resty ]; then
-    . $HOME/code/resty/resty
+if [ -f $HOME/src/resty/resty ]; then
+    . $HOME/src/resty/resty
 fi
