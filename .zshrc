@@ -62,9 +62,6 @@ DIRSTACKSIZE=8
 #eval `dircolors -b ~/.dircolors`
 export ZLS_COLORS=$LS_COLORS
 
-#Proxy
-export http_proxy=''
-
 #Pager
 export LESS=-FSRX
 export LESS_TERMCAP_mb=$'\E[01;31m'    # début de blink
@@ -153,10 +150,8 @@ if [ $commands[keychain] ]; then
     keychain -q id_rsa
 fi
 
-if [ -f $HOME/src/resty/resty ]; then
-    . $HOME/src/resty/resty
-fi
-
 stty stop undef # to unmap ctrl-s
 
-source $HOME/.env/*.env
+for i in `ls --indicator-style=none $HOME/.env`; do
+    source $HOME/.env/$i
+done
