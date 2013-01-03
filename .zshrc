@@ -29,7 +29,7 @@ alias du='du -h'
 alias grep='grep --color=auto'
 alias la='ls -a'
 alias l='ls -lh'
-alias ls="ls -F -G"
+alias ls='ls -F --color=auto'
 alias mkdir='nocorrect mkdir' # no spelling correction on mkdir
 alias mv='nocorrect mv' # no spelling correction on mv
 alias sft='noglob find . -name \*~?~ -exec rm -f {} +'
