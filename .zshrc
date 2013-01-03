@@ -16,6 +16,10 @@ case $TERM in
    ;;
 esac
 
+for i in `ls $HOME/.env`; do
+    source $HOME/.env/$i
+done
+
 # Aliases
 alias cp='nocorrect cp' # no spelling correction on cp
 alias df='df -h'
@@ -151,7 +155,3 @@ if [ $commands[keychain] ]; then
 fi
 
 stty stop undef # to unmap ctrl-s
-
-for i in `ls --indicator-style=none $HOME/.env`; do
-    source $HOME/.env/$i
-done
