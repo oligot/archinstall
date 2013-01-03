@@ -10,3 +10,6 @@
 	last = log -1 HEAD
 [color]
 	ui = auto
+[core]
+	autocrlf = input
+	whitespace = cr-at-eol

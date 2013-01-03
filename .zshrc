@@ -43,6 +43,7 @@ alias -g L='| less'
 alias -g LV="| /usr/share/vim/vimcurrent/macros/less.sh --cmd ':set filetype=diff' -"
 alias -g G='| grep'
 alias -g V='| vim -'
+alias -g P='| ~/src/resty/pypp'
 
 # Suffix Aliases
 alias -s pdf="zathura "
@@ -60,9 +61,6 @@ DIRSTACKSIZE=8
 
 #eval `dircolors -b ~/.dircolors`
 export ZLS_COLORS=$LS_COLORS
-
-#Proxy
-export http_proxy=''
 
 #Pager
 export LESS=-FSRX
@@ -84,34 +82,11 @@ export MPD_HOST="lateralus"
 #mail
 export MAIL=/var/spool/mail/$USER
 
-#Eiffel
-export ISE_EIFFEL=/Applications/MacPorts/Eiffel71
-export ISE_PLATFORM=macosx-x86-64
-export ISE_LIBRARY=$ISE_EIFFEL
-export GOBO=$ISE_EIFFEL/library/gobo/svn
-export GOBO_CC=gcc
-export GOBO_EIFFEL=ise
-export GOBO_OS=unix
-export EXTENSION_LIBRARIES=$HOME/eiffel/forum
-export ISE_LIBRARIES=$EXTENSION_LIBRARIES/ise
-export SAFE=$EXTENSION_LIBRARIES/safe
-export SAFE_KERNEL=$SAFE/kernel
-#export SAFE_KERNEL=$HOME/eiffel/safe/kernel
-export EFM=$SAFE_LIB/efm
-export ECURSES=$SAFE_LIB/ecurses
-export ECLI=$SAFE/ecli
-#export ECLI=$HOME/eiffel/safe/ecli
-export EPOM=$SAFE/epom
-export LOG4E=$HOME/eiffel/forum/goanna-origo/log4e
-export GOANNA=$HOME/eiffel/forum/goanna-origo/goanna
-export EPOSIX=$EXTENSION_LIBRARIES/eposix
-export VAMPEER=$HOME/eiffel/vampeer
-export ERL_G=$HOME/eiffel/erl_g
-export PROJECT_SOURCE=$HOME/eiffel/systeme_controle
-export EWF=$HOME/eiffel/EWF
+#Oracle
+export ORACLE_HOME="/usr/lib/oracle/10.2.0.4/client64"
 
 # Path
-export PATH="/opt/local/bin:/opt/local/sbin:$PATH:$HOME/bin:/opt/e17/bin:/usr/local/bin:/usr/lib/tracker:$ISE_EIFFEL/studio/spec/$ISE_PLATFORM/bin:$GOBO/bin:$ERL_G/bin:$PROJECT_SOURCE/COMPOSANTS/outils/bin"
+export PATH="/opt/local/bin:/opt/local/sbin:$PATH:$HOME/bin:/opt/e17/bin:/usr/local/bin:/usr/lib/tracker:$ERL_G/bin"
 export MANPATH=$MANPATH:/usr/local/share/man
 export PYTHONPATH="/opt/e17/lib/python2.7/site-packages:/home/oli/bin:/home/oli/openerp/server/trunk:/home/oli/tryton/trytond"
 
@@ -175,6 +150,8 @@ if [ $commands[keychain] ]; then
     keychain -q id_rsa
 fi
 
-if [ -f $HOME/src/resty/resty ]; then
-    . $HOME/src/resty/resty
-fi
+stty stop undef # to unmap ctrl-s
+
+for i in `ls --indicator-style=none $HOME/.env`; do
+    source $HOME/.env/$i
+done
