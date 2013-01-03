@@ -25,7 +25,7 @@ alias du='du -h'
 alias grep='grep --color=auto'
 alias la='ls -a'
 alias l='ls -lh'
-alias ls="ls -F --color=auto"
+alias ls="ls -F -G"
 alias mkdir='nocorrect mkdir' # no spelling correction on mkdir
 alias mv='nocorrect mv' # no spelling correction on mv
 alias sft='noglob find . -name \*~?~ -exec rm -f {} +'
@@ -85,9 +85,10 @@ export MPD_HOST="lateralus"
 export MAIL=/var/spool/mail/$USER
 
 #Eiffel
-export ISE_EIFFEL=$HOME/eiffel/Eiffel
-export ISE_PLATFORM=linux-x86-64
-export GOBO=$HOME/eiffel/gobo
+export ISE_EIFFEL=/Applications/MacPorts/Eiffel71
+export ISE_PLATFORM=macosx-x86-64
+export ISE_LIBRARY=$ISE_EIFFEL
+export GOBO=$ISE_EIFFEL/library/gobo/svn
 export GOBO_CC=gcc
 export GOBO_EIFFEL=ise
 export GOBO_OS=unix
