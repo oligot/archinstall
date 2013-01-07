@@ -1,8 +1,6 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " File: ~/.vimrc (Vim configuration file)
 " Maintainer: Olivier Ligot <oligot at gmail.com>
-" Version: 1.2
-" Last Change: 20/07/2007
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -142,8 +140,8 @@ set expandtab
 set cino=>5n-3f0^-2{2
 set modeline
 
-au FileType html,php,vim setl shiftwidth=2
-au FileType html,php,vim setl tabstop=2
+au FileType html,php,vim,javascript setl shiftwidth=2
+au FileType html,php,vim,javascript setl tabstop=2
 
 augroup filetype
 	au BufRead *.m        set ft=mercury
