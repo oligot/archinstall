@@ -5,7 +5,8 @@ autoload -U compinit #promptinit
 compinit
 #promptinit; prompt walters
 
-export PROMPT='> '
+source $HOME/.zsh/git-prompt/zshrc.sh
+export PROMPT='$(git_super_status)> '
 export RPROMPT="%F{${1:-green}}%~%f"
 
 # Prompts
