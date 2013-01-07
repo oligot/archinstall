@@ -7,7 +7,7 @@ compinit
 
 source $HOME/.zsh/git-prompt/zshrc.sh
 export PROMPT='$(git_super_status)> '
-export RPROMPT="%F{${1:-green}}%~%f"
+export RPROMPT="%F{green}%~%f"
 
 # Prompts
 case $TERM in
