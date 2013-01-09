@@ -30,6 +30,7 @@ alias df='df -h'
 alias dh='dirs -v'
 alias dodo='sudo /sbin/shutdown -h now'
 alias du='du -h'
+alias g='git'
 alias grep='grep --color=auto'
 alias la='ls -a'
 alias l='ls -lh'
@@ -37,6 +38,7 @@ alias ls='ls -F ${colorflag}'
 alias mkdir='nocorrect mkdir' # no spelling correction on mkdir
 alias mv='nocorrect mv' # no spelling correction on mv
 alias sft='noglob find . -name \*~?~ -exec rm -f {} +'
+alias v='vim'
 
 # List only directories and symbolic
 # links that point to directories
