@@ -107,8 +107,8 @@ zstyle ':completion:*:history-words' remove-all-dups yes
 zstyle ':completion:*:history-words' list false
 
 # Menu for completion with keyboard navigation
-#zstyle ':completion:*' menu select=2
-#zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
+zstyle ':completion:*' menu select=2
+zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
 
 # Don't complete elements if already selected in rm,cp,mv
 zstyle ':completion:*:rm:*' ignore-line yes
