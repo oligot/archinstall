@@ -19,16 +19,10 @@ esac
 
 # Detect which `ls` flavor is in use
 if ls --color > /dev/null 2>&1; then # GNU `ls`
-    flag="--indicator-style=none"
     colorflag="--color"
 else # OS X `ls`
-    flag=""
     colorflag="-G"
 fi
-
-for i in `ls ${flag} $HOME/.env`; do
-    source $HOME/.env/$i
-done
 
 # Aliases
 alias cp='nocorrect cp' # no spelling correction on cp
@@ -165,3 +159,7 @@ if [ $commands[keychain] ]; then
 fi
 
 stty stop undef # to unmap ctrl-s
+
+for i in $HOME/.env/*; do
+    source $i
+done
