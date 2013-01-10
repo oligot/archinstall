@@ -1,15 +1,16 @@
 [user]
-	name = Olivier Ligot
-	email = oligot@gmail.com
+    name = Olivier Ligot
+    email = oligot@gmail.com
 [alias]
-	co = checkout
-	br = branch
-	ci = commit
-	st = status
-	unstage = reset HEAD --
-	last = log -1 HEAD
+    co = checkout
+    br = branch
+    ci = commit
+    st = status
+    di = diff
+    unstage = reset HEAD --
+    last = log -1 HEAD
 [color]
-	ui = auto
+    ui = auto
 [core]
-	autocrlf = input
-	whitespace = cr-at-eol
+    autocrlf = input
+    whitespace = cr-at-eol
