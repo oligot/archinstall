@@ -39,7 +39,6 @@ alias l='ls -lh'
 alias ls='ls -F ${colorflag}'
 alias mkdir='nocorrect mkdir' # no spelling correction on mkdir
 alias mv='nocorrect mv' # no spelling correction on mv
-alias se='source env.sh'
 alias sft='noglob find . -name \*~?~ -exec rm -f {} +'
 alias sz='source ~/.zshrc'
 alias v='vim'
