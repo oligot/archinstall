@@ -96,7 +96,7 @@ export MPD_HOST="lateralus"
 export MAIL=/var/spool/mail/$USER
 
 #Oracle
-export ORACLE_HOME="/usr/lib/oracle/10.2.0.4/client64"
+export ORACLE_HOME="/usr/lib/oracle/11.2/client64"
 
 # Path
 export PATH="/opt/local/bin:/opt/local/sbin:$PATH:$HOME/bin:/opt/e17/bin:/usr/local/bin:/usr/lib/tracker:$ERL_G/bin"
