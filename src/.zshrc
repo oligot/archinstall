@@ -24,6 +24,11 @@ else # OS X `ls`
     colorflag="-G"
 fi
 
+#Functions
+function esl() {
+    rm $HOME/eiffel/Eiffel && ln -s $HOME/eiffel/Eiffel"$@" $HOME/eiffel/Eiffel
+}
+
 # Aliases
 alias cp='nocorrect cp' # no spelling correction on cp
 alias df='df -h'
@@ -72,7 +77,7 @@ LISTMAX=0
 DIRSTACKSIZE=8
 
 
-#eval `dircolors -b ~/.dircolors`
+eval `dircolors -b ~/.dircolors`
 export ZLS_COLORS=$LS_COLORS
 
 #Pager
@@ -99,9 +104,9 @@ export MAIL=/var/spool/mail/$USER
 export ORACLE_HOME="/usr/lib/oracle/11.2/client64"
 
 # Path
-export PATH="/opt/local/bin:/opt/local/sbin:$PATH:$HOME/bin:/opt/e17/bin:/usr/local/bin:/usr/lib/tracker:$ERL_G/bin"
+export PATH="$PATH:$HOME/bin:/usr/local/bin:/usr/lib/tracker:$ERL_G/bin"
 export MANPATH=$MANPATH:/usr/local/share/man
-export PYTHONPATH="/opt/e17/lib/python2.7/site-packages:/home/oli/bin:/home/oli/openerp/server/trunk:/home/oli/tryton/trytond"
+export PYTHONPATH="/home/oli/bin:/home/oli/openerp/server/trunk:/home/oli/tryton/trytond"
 
 # Expansion options
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
@@ -171,6 +176,7 @@ stty stop undef # to unmap ctrl-s
 for i in $HOME/.env/*; do
     source $i
 done
+
 ###-begin-npm-completion-###
 #
 # npm command completion script
