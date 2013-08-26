@@ -140,8 +140,8 @@ set expandtab
 set cino=>5n-3f0^-2{2
 set modeline
 
-au FileType html,php,vim,javascript setl shiftwidth=2
-au FileType html,php,vim,javascript setl tabstop=2
+au FileType html,php,vim,javascript,css setl shiftwidth=2
+au FileType html,php,vim,javascript,css setl tabstop=2
 
 augroup filetype
 	au BufRead *.m        set ft=mercury
