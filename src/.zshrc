@@ -25,7 +25,7 @@ else # OS X `ls`
 fi
 
 #Functions
-function esl() {
+function e() {
     rm $HOME/eiffel/Eiffel && ln -s $HOME/eiffel/Eiffel"$@" $HOME/eiffel/Eiffel
 }
 
