@@ -104,7 +104,8 @@ export MAIL=/var/spool/mail/$USER
 export ORACLE_HOME="/usr/lib/oracle/11.2/client64"
 
 # Path
-export PATH="$PATH:$HOME/bin:/usr/local/bin:/usr/lib/tracker:$ERL_G/bin"
+export GOPATH=$HOME/src/go
+export PATH="$PATH:$HOME/bin:/usr/local/bin:/usr/lib/tracker:$ERL_G/bin:/opt/maven/bin:/usr/local/go/bin:$GOPATH/bin"
 export MANPATH=$MANPATH:/usr/local/share/man
 export PYTHONPATH="/home/oli/bin:/home/oli/openerp/server/trunk:/home/oli/tryton/trytond"
 
@@ -157,16 +158,6 @@ setopt			   \
 unsetopt ignore_eof	   \
 	list_ambiguous
 
-if [ -f /usr/share/autojump/autojump.sh ]; then
-    . /usr/share/autojump/autojump.sh
-fi
-if [ -f /etc/profile.d/autojump.sh ]; then
-    . /etc/profile.d/autojump.sh
-fi
-if [ -f /opt/local/etc/profile.d/autojump.sh ]; then
-    . /opt/local/etc/profile.d/autojump.sh
-fi
-
 if [ $commands[keychain] ]; then
     keychain -q id_rsa
 fi
@@ -176,6 +167,8 @@ stty stop undef # to unmap ctrl-s
 for i in $HOME/.env/*; do
     source $i
 done
+
+source ~/src/z/z.sh
 
 ###-begin-npm-completion-###
 #
