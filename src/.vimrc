@@ -140,8 +140,8 @@ set expandtab
 set cino=>5n-3f0^-2{2
 set modeline
 
-au FileType html,php,vim,javascript,css setl shiftwidth=2
-au FileType html,php,vim,javascript,css setl tabstop=2
+au FileType html,php,vim,javascript,css,xml setl shiftwidth=2
+au FileType html,php,vim,javascript,css,xml setl tabstop=2
 
 augroup filetype
 	au BufRead *.m        set ft=mercury
@@ -238,6 +238,9 @@ cabbrev lvim
       \ <Bar> lw
       \ <C-Left><C-Left><C-Left>
 
+" Markdown
+let g:vim_markdown_folding_disabled=1
+
 "Ranger
 fun! RangerChooser()
   silent !ranger --choosefile=/tmp/chosenfile `[ -z '%' ] && echo -n . || dirname %`
@@ -249,3 +252,6 @@ fun! RangerChooser()
 endfun
 
 map <leader>r :call RangerChooser()<CR>
+
+"CtrlP
+let g:ctrlp_show_hidden = 1
