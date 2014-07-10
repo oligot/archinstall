@@ -238,9 +238,6 @@ cabbrev lvim
       \ <Bar> lw
       \ <C-Left><C-Left><C-Left>
 
-" Markdown
-let g:vim_markdown_folding_disabled=1
-
 "Ranger
 fun! RangerChooser()
   silent !ranger --choosefile=/tmp/chosenfile `[ -z '%' ] && echo -n . || dirname %`
