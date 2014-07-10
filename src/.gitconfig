@@ -16,3 +16,5 @@
     autocrlf = input
     whitespace = cr-at-eol
     excludesfile = ~/.gitignore
+[push]
+    default = simple
