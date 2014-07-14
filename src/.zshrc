@@ -168,7 +168,15 @@ for i in $HOME/.env/*; do
     source $i
 done
 
-source ~/src/z/z.sh
+if [ -f /usr/share/autojump/autojump.sh ]; then
+    . /usr/share/autojump/autojump.sh
+fi
+if [ -f /etc/profile.d/autojump.sh ]; then
+    . /etc/profile.d/autojump.sh
+fi
+if [ -f /opt/local/etc/profile.d/autojump.sh ]; then
+    . /opt/local/etc/profile.d/autojump.sh
+fi
 
 ###-begin-npm-completion-###
 #
