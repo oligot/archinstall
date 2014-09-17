@@ -45,7 +45,7 @@ DISABLE_AUTO_TITLE="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git git-extras autojump mvn npm tmux)
+plugins=(docker git git-extras autojump mvn npm tmux)
 
 source $ZSH/oh-my-zsh.sh
 
