@@ -74,7 +74,16 @@ export MANPATH=$MANPATH:/usr/local/share/man
 export EDITOR="vim"
 export BROWSER="firefox"
 export ORACLE_HOME="/usr/lib/oracle/11.2/client64"
+
+#Pager
 export LESS=-FSRX
+export LESS_TERMCAP_mb=$'\E[01;31m'    # début de blink
+export LESS_TERMCAP_md=$'\E[01;31m'    # début de gras
+export LESS_TERMCAP_me=$'\E[0m'        # fin
+export LESS_TERMCAP_so=$'\E[01;44;33m' # début de la ligne d`état
+export LESS_TERMCAP_se=$'\E[0m'        # fin
+export LESS_TERMCAP_us=$'\E[01;32m'    # début de souligné
+export LESS_TERMCAP_ue=$'\E[0m'        # fin
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
