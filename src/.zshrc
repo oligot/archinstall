@@ -103,6 +103,21 @@ alias esc='estudio -config'
 alias -g L='| less'
 alias -g G='| grep'
 
+# zsh Options
+setopt			   \
+	autopushd 	   \
+	correct		   \
+	correctall	   \
+	extendedglob	   \
+	histignorealldups  \
+	pushdminus         \
+	pushdsilent        \
+	pushdtohome	   \
+	sharehistory
+
+unsetopt ignore_eof	   \
+	list_ambiguous
+
 # Terminal title
 case $TERM in
    xterm*|rxvt*|screen)
