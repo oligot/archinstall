@@ -10,6 +10,7 @@
     dic = diff --cached -C
     unstage = reset HEAD --
     last = log -1 HEAD
+    bd = for-each-ref --sort=-committerdate refs/heads/
 [color]
     ui = auto
 [core]
