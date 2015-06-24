@@ -1,1 +1,0 @@
-/home/oli/eiffel/vim-eiffel/ftplugin/eiffel.vim

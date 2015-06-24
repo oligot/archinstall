@@ -228,6 +228,9 @@ nnoremap <silent> <leader>k :bprevious<CR>
 nnoremap <silent> <leader>l :bnext<CR>
 nnoremap <silent> <leader>, :BufExplorer<CR>
 
+"Pathogen
+execute pathogen#infect()
+
 "Eiffel syntax highlighting 
 let eiffel_ise=1
 let eiffel_strict=1
