@@ -45,7 +45,7 @@ DISABLE_AUTO_TITLE="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(docker git git-extras go z mvn npm tmux)
+plugins=(docker git git-extras go z mvn npm tmux zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -102,6 +102,7 @@ alias esc='estudio -config'
 # at the beginning of the command line.
 alias -g L='| less'
 alias -g G='| grep'
+alias -g P='| python -m json.tool'
 
 # zsh Options
 setopt			   \
