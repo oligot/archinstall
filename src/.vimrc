@@ -119,16 +119,16 @@ set mat=2
 
 "Nice statusbar
 set laststatus=2
-set statusline=
-set statusline+=%-3.3n\                      " buffer number
-set statusline+=%F\                          " file name
-set statusline+=%h%m%r%w                     " flags
-set statusline+=\[%{strlen(&ft)?&ft:'none'}, " filetype
-set statusline+=%{&encoding},                " encoding
-set statusline+=%{&fileformat}]              " file format
-set statusline+=%=                           " right align
-"set statusline+=0x%-8B\                      " current char
-set statusline+=%-14.(%l,%c%V%)\ %<%P        " offset
+"set statusline=
+"set statusline+=%-3.3n\                      " buffer number
+"set statusline+=%F\                          " file name
+"set statusline+=%h%m%r%w                     " flags
+"set statusline+=\[%{strlen(&ft)?&ft:'none'}, " filetype
+"set statusline+=%{&encoding},                " encoding
+"set statusline+=%{&fileformat}]              " file format
+"set statusline+=%=                           " right align
+""set statusline+=0x%-8B\                      " current char
+"set statusline+=%-14.(%l,%c%V%)\ %<%P        " offset
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
