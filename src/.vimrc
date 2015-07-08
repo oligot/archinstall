@@ -88,7 +88,7 @@ set cmdheight=1
 set number
 
 "Do not redraw, when running macros.. lazyredraw
-set lz
+set lazyredraw
 
 "Change buffer - without saving
 set hid
@@ -102,6 +102,9 @@ set whichwrap+=<,>,h,l
 "Ignore case when searching
 set ignorecase
 set incsearch
+
+"turn off search highlight
+nnoremap <leader><space> :nohlsearch<CR>
 
 "Set magic on
 set magic
