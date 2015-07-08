@@ -258,3 +258,6 @@ map <leader>r :call RangerChooser()<CR>
 
 "CtrlP
 let g:ctrlp_show_hidden = 1
+
+"toggle gundo
+nnoremap <leader>u :GundoToggle<CR>
