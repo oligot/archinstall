@@ -10,7 +10,7 @@
 set nocompatible
 
 "Sets how many lines of history VIM har to remember
-set history=400
+set history=1000
 
 "Enable filetype plugin
 filetype plugin on
@@ -103,7 +103,7 @@ set whichwrap+=<,>,h,l
 set ignorecase
 set incsearch
 
-"turn off search highlight
+"Turn off search highlight
 nnoremap <leader><space> :nohlsearch<CR>
 
 "Set magic on
@@ -116,6 +116,13 @@ set t_vb=
 
 "show matching bracets
 set showmatch
+
+"Enhanced switch using %
+runtime macros/matchit.vim
+
+"Catch trailing whitespace
+set listchars=tab:>-,trail:·,eol:$
+nmap <silent> <leader>c :set nolist!<CR>
 
 "How many tenths of a second to blink
 set mat=2
