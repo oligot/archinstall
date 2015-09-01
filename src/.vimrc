@@ -32,6 +32,9 @@ let g:maplocalleader = ","
 nmap <leader>w :w!<cr>
 nmap <leader>f :find<cr>
 
+"Save read-only files
+cmap w!! w !sudo tee % >/dev/null
+
 "Fast reloading of the .vimrc
 map <leader>s :source ~/.vimrc<cr>
 "Fast editing of .vimrc
@@ -52,6 +55,8 @@ autocmd BufReadPost *
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "Enable syntax hl
 syntax enable
+
+set t_Co=256
 
 if has("gui_running")
 	set guioptions-=T
@@ -103,9 +108,6 @@ set whichwrap+=<,>,h,l
 set ignorecase
 set incsearch
 
-"Turn off search highlight
-nnoremap <leader><space> :nohlsearch<CR>
-
 "Set magic on
 set magic
 
@@ -129,17 +131,9 @@ set mat=2
 
 "Nice statusbar
 set laststatus=2
-"set statusline=
-"set statusline+=%-3.3n\                      " buffer number
-"set statusline+=%F\                          " file name
-"set statusline+=%h%m%r%w                     " flags
-"set statusline+=\[%{strlen(&ft)?&ft:'none'}, " filetype
-"set statusline+=%{&encoding},                " encoding
-"set statusline+=%{&fileformat}]              " file format
-"set statusline+=%=                           " right align
-""set statusline+=0x%-8B\                      " current char
-"set statusline+=%-14.(%l,%c%V%)\ %<%P        " offset
 
+"Don't show mode on the last line
+set noshowmode
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Text options
@@ -207,6 +201,9 @@ endif
 
 set autochdir
 
+"Copy and paste from clipboard
+set clipboard=unnamedplus
+
 "Tlist
 let Tlist_Show_One_File=1
 let Tlist_Use_Right_Window=1
@@ -236,7 +233,7 @@ let g:miniBufExplModSelTarget = 1
 nnoremap <silent> <leader>d :bdelete<CR>
 nnoremap <silent> <leader>k :bprevious<CR>
 nnoremap <silent> <leader>l :bnext<CR>
-nnoremap <silent> <leader>, :BufExplorer<CR>
+nnoremap <silent> <leader>, :CtrlPBuffer<CR>
 
 "Pathogen
 execute pathogen#infect()
@@ -268,3 +265,23 @@ let g:ctrlp_show_hidden = 1
 
 "toggle gundo
 nnoremap <leader>u :GundoToggle<CR>
+
+"Airline
+let g:airline_powerline_fonts = 1
+
+"Incsearch
+let g:incsearch#auto_nohlsearch = 1
+map /  <Plug>(incsearch-forward)
+map ?  <Plug>(incsearch-backward)
+map g/ <Plug>(incsearch-stay)
+map n  <Plug>(incsearch-nohl-n)
+map N  <Plug>(incsearch-nohl-N)
+map *  <Plug>(incsearch-nohl-*)
+map #  <Plug>(incsearch-nohl-#)
+map g* <Plug>(incsearch-nohl-g*)
+map g# <Plug>(incsearch-nohl-g#)
+
+"Ack
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep --hidden'
+endif
