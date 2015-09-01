@@ -45,7 +45,7 @@ DISABLE_AUTO_TITLE="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(docker git git-extras go z mvn npm tmux zsh-syntax-highlighting)
+plugins=(docker git git-extras go fasd mvn npm tmux zsh-syntax-highlighting history-substring-search vi-mode)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -97,6 +97,7 @@ alias df='df -h'
 alias dodo='sudo /sbin/shutdown -h now'
 alias du='du -h'
 alias esc='estudio -config'
+alias gpa='git add . && git commit --verbose && git push'
 
 # Global aliases -- These do not have to be
 # at the beginning of the command line.
@@ -130,3 +131,7 @@ esac
 for i in $HOME/.env/*; do
     source $i
 done
+
+bindkey '^R' history-incremental-search-backward
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
