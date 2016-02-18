@@ -151,7 +151,7 @@ augroup filetype
 	au BufRead *.m        set ft=mercury
 augroup END
 
-autocmd BufNewFile,BufRead *.json set ft=javascript
+"autocmd BufNewFile,BufRead *.json set ft=javascript
 
 set smarttab
 set lbr
@@ -285,3 +285,8 @@ map g# <Plug>(incsearch-nohl-g#)
 if executable('ag')
   let g:ackprg = 'ag --vimgrep --hidden'
 endif
+
+"Syntastic
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_javascript_checkers = ['eslint']
