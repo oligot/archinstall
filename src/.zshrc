@@ -128,9 +128,17 @@ case $TERM in
    ;;
 esac
 
+# Source environment variables
 for i in $HOME/.env/*; do
     source $i
 done
+
+# Source local environment variables
+if [ -d "$HOME/.env.local" ]; then
+    for i in $HOME/.env.local/*; do
+        source $i
+    done
+fi
 
 bindkey '^R' history-incremental-search-backward
 bindkey '^[[A' history-substring-search-up
