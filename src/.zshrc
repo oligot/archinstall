@@ -5,7 +5,7 @@ export ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="robbyrussell"
+ZSH_THEME="oli"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -45,7 +45,7 @@ DISABLE_AUTO_TITLE="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(docker git git-extras go fasd mvn npm tmux zsh-syntax-highlighting history-substring-search vi-mode)
+plugins=(docker git git-extras go fasd mvn npm tmux zsh-syntax-highlighting history-substring-search vi-mode thefuck)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -135,3 +135,4 @@ done
 bindkey '^R' history-incremental-search-backward
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
+eval $(thefuck --alias)
