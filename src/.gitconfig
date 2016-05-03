@@ -1,13 +1,23 @@
 [user]
     name = Olivier Ligot
 [alias]
+    # Human Git Aliases
+    # http://gggritso.com/human-git-aliases
+    branches = branch -a
+    tags = tag
+    stashes = stash list
+    remotes = remote -v
+    unstage = reset -q HEAD --
+    discard = checkout --
+    uncommit = reset --mixed HEAD~
+    amend = commit --amend
+
     co = checkout
     br = branch
     ci = commit
     st = status
     di = diff
     dic = diff --cached -C
-    unstage = reset HEAD --
     last = log -1 HEAD
     bd = for-each-ref --sort=-committerdate refs/remotes/
 [core]

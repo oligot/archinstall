@@ -100,6 +100,7 @@ alias esc='estudio -config'
 alias gpa='git add . && git commit --verbose && git push'
 alias vim='vim --servername VIM'
 alias v='vim --remote'
+alias nevermind='git reset --hard HEAD && git clean -d -f'
 
 # Debian/Ubuntu
 alias as='apt-cache search'
