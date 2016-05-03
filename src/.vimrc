@@ -30,7 +30,6 @@ let g:maplocalleader = ","
 
 "Fast saving
 nmap <leader>w :w!<cr>
-nmap <leader>f :find<cr>
 
 "Save read-only files
 cmap w!! w !sudo tee % >/dev/null
@@ -290,3 +289,6 @@ endif
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_javascript_checkers = ['eslint']
+
+"Tern
+nmap <leader>f :TernDef<cr>
