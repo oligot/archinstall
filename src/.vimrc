@@ -264,7 +264,7 @@ map <leader>r :call RangerChooser()<CR>
 let g:ctrlp_show_hidden = 1
 
 "toggle gundo
-nnoremap <leader>u :GundoToggle<CR>
+nnoremap <leader>u :UndotreeToggle<CR>
 
 "Airline
 let g:airline_powerline_fonts = 1
