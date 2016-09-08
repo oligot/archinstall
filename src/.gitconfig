@@ -24,7 +24,7 @@
     autocrlf = input
     whitespace = cr-at-eol
     excludesfile = ~/.gitignore
-    pager = diff-so-fancy | less --tabs=1,5 -R
+    pager = diff-so-fancy | less --tabs=4 -RFX
 [push]
     default = simple
 [merge]
@@ -40,4 +40,6 @@
 
 # use separate file for username / github token / etc
 [include]
-  path = ~/.gitconfig.local
+    path = ~/.gitconfig.local
+[diff]
+    compactionHeuristic = true

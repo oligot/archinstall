@@ -90,6 +90,7 @@ set cmdheight=1
 
 "Show line number
 set number
+set relativenumber
 
 "Do not redraw, when running macros.. lazyredraw
 set lazyredraw
@@ -134,6 +135,16 @@ set laststatus=2
 "Don't show mode on the last line
 set noshowmode
 
+"General conceal settings
+set conceallevel=1
+set concealcursor=nc
+
+" vim-javascript conceal settings.
+let g:javascript_conceal_function = "λ"
+let g:javascript_conceal_this = "@"
+let g:javascript_conceal_return = "<"
+let g:javascript_conceal_prototype = "#"
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Text options
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -143,8 +154,8 @@ set expandtab
 set cino=>5n-3f0^-2{2
 set modeline
 
-au FileType html,php,vim,javascript,css,xml setl shiftwidth=2
-au FileType html,php,vim,javascript,css,xml setl tabstop=2
+au FileType html,php,vim,javascript,scss,css,xml setl shiftwidth=2
+au FileType html,php,vim,javascript,scss,css,xml setl tabstop=2
 
 augroup filetype
 	au BufRead *.m        set ft=mercury
@@ -171,9 +182,6 @@ set tw=500
    "Wrap lines
    set wrap
 
-
-"Set grep program to ack-grep
-set grepprg=ack-grep
 
 "When doing tab completion, give the following files lower priority. You may
 "wish to set 'wildignore' to completely ignore files, and 'wildmenu' to enable
@@ -202,6 +210,14 @@ set autochdir
 
 "Copy and paste from clipboard
 set clipboard=unnamedplus
+
+set backupcopy=yes
+
+" Quicker window movement
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-h> <C-w>h
+nnoremap <C-l> <C-w>l
 
 "Tlist
 let Tlist_Show_One_File=1
@@ -233,6 +249,7 @@ nnoremap <silent> <leader>d :bdelete<CR>
 nnoremap <silent> <leader>k :bprevious<CR>
 nnoremap <silent> <leader>l :bnext<CR>
 nnoremap <silent> <leader>, :CtrlPBuffer<CR>
+nnoremap <leader><space> <C-^>
 
 "Pathogen
 execute pathogen#infect()
@@ -259,9 +276,6 @@ endfun
 
 map <leader>r :call RangerChooser()<CR>
 
-"CtrlP
-let g:ctrlp_show_hidden = 1
-
 "toggle gundo
 nnoremap <leader>u :UndotreeToggle<CR>
 
@@ -280,9 +294,16 @@ map #  <Plug>(incsearch-nohl-#)
 map g* <Plug>(incsearch-nohl-g*)
 map g# <Plug>(incsearch-nohl-g#)
 
-"Ack
+" The Silver Searcher
 if executable('ag')
-  let g:ackprg = 'ag --vimgrep --hidden'
+  " Use ag over grep
+  set grepprg=ag\ --nogroup\ --nocolor
+
+  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+
+  " ag is fast enough that CtrlP doesn't need to cache
+  let g:ctrlp_use_caching = 0
 endif
 
 "Syntastic
@@ -292,3 +313,6 @@ let g:syntastic_javascript_checkers = ['eslint']
 
 "Tern
 nmap <leader>f :TernDef<cr>
+
+"Instant Markdown
+let g:instant_markdown_autostart = 0

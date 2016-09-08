@@ -45,13 +45,13 @@ DISABLE_AUTO_TITLE="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(docker git git-extras go fasd mvn npm tmux zsh-syntax-highlighting history-substring-search vi-mode thefuck z archlinux)
+plugins=(docker git git-extras go fasd mvn npm tmux zsh-syntax-highlighting history-substring-search vi-mode thefuck z archlinux extract zsh-better-npm-completion)
 
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-export PATH="$PATH:$HOME/bin:/usr/local/bin:/usr/lib/tracker:$ERL_G/bin:/opt/maven/bin:/usr/local/go/bin:$GOPATH/bin"
+export PATH="$PATH:$HOME/bin:/usr/local/bin:/usr/lib/tracker:$ERL_G/bin:/opt/maven/bin:/usr/local/go/bin:$GOPATH/bin:$HOME/.local/share/umake/bin"
 export GOPATH=$HOME/go
 export MANPATH=$MANPATH:/usr/local/share/man
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -101,6 +101,7 @@ alias gpa='git add . && git commit --verbose && git push'
 alias vim='vim --servername VIM'
 alias v='vim --remote'
 alias nevermind='git reset --hard HEAD && git clean -d -f'
+alias t='tmux -2 attach || tmux -2'
 
 # Debian/Ubuntu
 alias as='apt-cache search'
@@ -113,6 +114,8 @@ alias auu='sudo apt-get update && sudo apt-get upgrade'
 alias -g L='| less'
 alias -g G='| grep'
 alias -g P='| python -m json.tool'
+
+function mingz () { curl -sL wzrd.in/standalone/"$1"|uglifyjs -mc 2>/dev/null|gzip -c|wc -c;}
 
 # zsh Options
 setopt			   \
@@ -157,3 +160,5 @@ eval $(thefuck --alias)
 # Persistent rehash
 # https://wiki.archlinux.org/index.php/zsh#Persistent_rehash
 zstyle ':completion:*' rehash true
+
+[[ -s "/home/oli/.gvm/scripts/gvm" ]] && source "/home/oli/.gvm/scripts/gvm"
