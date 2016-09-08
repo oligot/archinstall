@@ -251,8 +251,25 @@ nnoremap <silent> <leader>l :bnext<CR>
 nnoremap <silent> <leader>, :CtrlPBuffer<CR>
 nnoremap <leader><space> <C-^>
 
-"Pathogen
-execute pathogen#infect()
+"Plug
+call plug#begin('~/.vim/plugged')
+Plug 'vim-airline/vim-airline'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'mattn/emmet-vim'
+Plug 'haya14busa/incsearch.vim'
+Plug 'pangloss/vim-javascript'
+Plug 'elzr/vim-json'
+Plug 'scrooloose/syntastic'
+Plug 'wincent/terminus'
+Plug 'ternjs/tern_for_vim'
+Plug 'edkolev/tmuxline.vim'
+Plug 'mbbill/undotree'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+Plug 'suan/vim-instant-markdown'
+call plug#end()
 
 "Eiffel syntax highlighting 
 let eiffel_ise=1
