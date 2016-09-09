@@ -269,6 +269,9 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'suan/vim-instant-markdown'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+Plug 'isRuslan/vim-es6'
 call plug#end()
 
 "Eiffel syntax highlighting 
