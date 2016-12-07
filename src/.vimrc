@@ -264,7 +264,7 @@ Plug 'pangloss/vim-javascript'
 Plug 'elzr/vim-json'
 Plug 'scrooloose/syntastic'
 Plug 'wincent/terminus'
-Plug 'ternjs/tern_for_vim'
+Plug 'ternjs/tern_for_vim', { 'do': 'npm install' }
 Plug 'edkolev/tmuxline.vim'
 Plug 'mbbill/undotree'
 Plug 'tpope/vim-commentary'
@@ -276,6 +276,13 @@ Plug 'honza/vim-snippets'
 Plug 'isRuslan/vim-es6'
 Plug 'posva/vim-vue'
 Plug 'othree/html5.vim'
+Plug 'scrooloose/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'mhinz/vim-startify'
+Plug 'ryanoasis/vim-devicons'
+Plug 'othree/javascript-libraries-syntax.vim'
+Plug 'tpope/vim-surround'
+Plug 'AndrewRadev/splitjoin.vim'
 call plug#end()
 
 "Eiffel syntax highlighting 
@@ -340,3 +347,6 @@ nmap <leader>f :TernDef<cr>
 
 "Instant Markdown
 let g:instant_markdown_autostart = 0
+
+"javascript-libraries-syntax
+let g:used_javascript_libs = 'underscore,vue'
