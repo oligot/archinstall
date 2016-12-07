@@ -154,8 +154,8 @@ set expandtab
 set cino=>5n-3f0^-2{2
 set modeline
 
-au FileType html,php,vim,javascript,scss,css,xml setl shiftwidth=2
-au FileType html,php,vim,javascript,scss,css,xml setl tabstop=2
+au FileType html,php,vim,javascript,scss,css,xml,vue setl shiftwidth=2
+au FileType html,php,vim,javascript,scss,css,xml,vue setl tabstop=2
 
 augroup filetype
 	au BufRead *.m        set ft=mercury
@@ -272,6 +272,8 @@ Plug 'suan/vim-instant-markdown'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'isRuslan/vim-es6'
+Plug 'posva/vim-vue'
+Plug 'othree/html5.vim'
 call plug#end()
 
 "Eiffel syntax highlighting 
