@@ -209,7 +209,9 @@ endif
 set autochdir
 
 "Copy and paste from clipboard
-set clipboard=unnamedplus
+if has('unnamedplus')
+  set clipboard=unnamedplus
+endif
 
 set backupcopy=yes
 
