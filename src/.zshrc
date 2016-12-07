@@ -51,7 +51,7 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-export PATH="$PATH:$HOME/bin:/usr/local/bin:/usr/lib/tracker:$ERL_G/bin:/opt/maven/bin:/usr/local/go/bin:$GOPATH/bin:$HOME/.local/share/umake/bin"
+export PATH="$PATH:$HOME/bin:/usr/local/bin:/usr/lib/tracker:$ERL_G/bin:/opt/maven/bin:/usr/local/go/bin:$GOPATH/bin:$HOME/.local/share/umake/bin:$HOME/Library/Android/sdk/platform-tools/"
 export GOPATH=$HOME/go
 export MANPATH=$MANPATH:/usr/local/share/man
 # export MANPATH="/usr/local/man:$MANPATH"
