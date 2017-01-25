@@ -16,6 +16,12 @@ done
 if [ ! -d "$HOME/.oh-my-zsh" ]; then
     git clone https://github.com/robbyrussell/oh-my-zsh.git $HOME/.oh-my-zsh
 fi
+if [ ! -d "${HOME}/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting" ]; then
+    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${HOME}/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
+fi
+if [ ! -d "${HOME}/.oh-my-zsh/custom/plugins/zsh-autosuggestions" ]; then
+    git clone https://github.com/zsh-users/zsh-autosuggestions.git ${HOME}/.oh-my-zsh/custom/plugins/zsh-autosuggestions
+fi
 rm -f $HOME/.oh-my-zsh/themes/oli.zsh-theme
 ln -s $pwd/oli.zsh-theme $HOME/.oh-my-zsh/themes
 
