@@ -215,11 +215,25 @@ endif
 
 set backupcopy=yes
 
-" Quicker window movement
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-h> <C-w>h
-nnoremap <C-l> <C-w>l
+" Window movement shortcuts
+" move to the window in the direction shown, or create a new window
+function! WinMove(key)
+    let t:curwin = winnr()
+    exec "wincmd ".a:key
+    if (t:curwin == winnr())
+        if (match(a:key,'[jk]'))
+            wincmd v
+        else
+            wincmd s
+        endif
+        exec "wincmd ".a:key
+    endif
+endfunction
+
+map <silent> <C-h> :call WinMove('h')<cr>
+map <silent> <C-j> :call WinMove('j')<cr>
+map <silent> <C-k> :call WinMove('k')<cr>
+map <silent> <C-l> :call WinMove('l')<cr>
 
 "Tlist
 let Tlist_Show_One_File=1
@@ -248,21 +262,22 @@ let g:miniBufExplModSelTarget = 1
 
 "Buffers
 nnoremap <silent> <leader>d :bdelete<CR>
-nnoremap <silent> <leader>k :bprevious<CR>
-nnoremap <silent> <leader>l :bnext<CR>
 nnoremap <silent> <leader>, :CtrlPBuffer<CR>
+nnoremap <silent> <leader>v :CtrlPMRUFiles<CR>
 nnoremap <leader><space> <C-^>
+
+"Move selected block up/down in Visual block mode
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
 
 "Plug
 call plug#begin('~/.vim/plugged')
 Plug 'vim-airline/vim-airline'
-Plug 'ctrlpvim/ctrlp.vim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'mattn/emmet-vim'
 Plug 'haya14busa/incsearch.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'elzr/vim-json'
-Plug 'scrooloose/syntastic'
 Plug 'wincent/terminus'
 Plug 'ternjs/tern_for_vim', { 'do': 'npm install' }
 Plug 'edkolev/tmuxline.vim'
@@ -280,14 +295,18 @@ Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'mhinz/vim-startify'
 Plug 'ryanoasis/vim-devicons'
+Plug 'ctrlpvim/ctrlp.vim'
 Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'tpope/vim-surround'
 Plug 'AndrewRadev/splitjoin.vim'
+Plug 'kana/vim-textobj-user'
+Plug 'kana/vim-textobj-function'
+Plug 'thinca/vim-textobj-function-javascript'
+Plug 'mhinz/vim-grepper'
+Plug 'w0rp/ale'
+Plug 'rhysd/committia.vim'
+Plug 'terryma/vim-expand-region'
 call plug#end()
-
-"Eiffel syntax highlighting 
-let eiffel_ise=1
-let eiffel_strict=1
 
 cabbrev lvim
       \ lvim /\<lt><C-R><C-W>\>/gj
@@ -337,10 +356,22 @@ if executable('ag')
   let g:ctrlp_use_caching = 0
 endif
 
-"Syntastic
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_javascript_checkers = ['eslint']
+"Asynchronous Lint Engine
+let g:ale_linters = {'javascript': ['eslint']}
+let g:ale_sign_column_always = 1
+nmap <silent> <leader>l <Plug>(ale_previous_wrap)
+nmap <silent> <leader>k <Plug>(ale_next_wrap)
+
+function! FixJS()
+    "Save current cursor position"
+    let l:winview = winsaveview()
+    "run eslint fix on current buffer"
+    ! $(npm bin)/eslint --fix %
+    "Restore cursor position"
+    call winrestview(l:winview)
+endfunction
+command! FixJS :call FixJS()
+nmap <leader>jf :FixJS<cr>
 
 "Tern
 nmap <leader>f :TernDef<cr>
@@ -350,3 +381,9 @@ let g:instant_markdown_autostart = 0
 
 "javascript-libraries-syntax
 let g:used_javascript_libs = 'underscore,vue'
+
+"Grepper
+nnoremap <leader>g :Grepper -tool rg -grepprg rg --no-heading --vimgrep -i `git rev-parse --show-toplevel` -e<cr>
+nnoremap <leader>* :Grepper -tool rg -cword -noprompt<cr>
+nmap gs  <plug>(GrepperOperator)
+xmap gs  <plug>(GrepperOperator)
