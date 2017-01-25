@@ -43,3 +43,5 @@
     path = ~/.gitconfig.local
 [diff]
     compactionHeuristic = true
+[fetch]
+	prune = true
