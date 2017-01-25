@@ -45,7 +45,7 @@ DISABLE_AUTO_TITLE="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(docker git git-extras go fasd mvn npm tmux zsh-syntax-highlighting history-substring-search vi-mode thefuck z archlinux extract zsh-better-npm-completion)
+plugins=(docker git git-extras go fasd mvn npm tmux zsh-syntax-highlighting zsh-autosuggestions history-substring-search vi-mode thefuck z archlinux extract zsh-better-npm-completion)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -96,8 +96,9 @@ export LESS_TERMCAP_ue=$'\E[0m'        # fin
 alias df='df -h'
 alias dodo='sudo /sbin/shutdown -h now'
 alias du='du -h'
-alias esc='estudio -config'
-alias gpa='git add . && git commit --verbose && git push'
+alias gpa='git add . && git commit && git push'
+alias gdmb='git branch --merged master | grep -v "master" | xargs -n 1 git branch -d' # Delete local branches which have already been merged into master
+alias r='npm run'
 alias vim='vim --servername VIM'
 alias v='vim --remote'
 alias nevermind='git reset --hard HEAD && git clean -d -f'
@@ -162,3 +163,5 @@ eval $(thefuck --alias)
 zstyle ':completion:*' rehash true
 
 [[ -s "/home/oli/.gvm/scripts/gvm" ]] && source "/home/oli/.gvm/scripts/gvm"
+
+export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"  # Added by n-install (see http://git.io/n-install-repo).
