@@ -1,25 +1,8 @@
 [user]
     name = Olivier Ligot
 [alias]
-    # Human Git Aliases
-    # http://gggritso.com/human-git-aliases
-    branches = branch -a
-    tags = tag
-    stashes = stash list
-    remotes = remote -v
-    unstage = reset -q HEAD --
-    discard = checkout --
-    uncommit = reset --mixed HEAD~
-    amend = commit --amend
-
-    co = checkout
-    br = branch
-    ci = commit
-    st = status
-    di = diff
-    dic = diff --cached -C
-    last = log -1 HEAD
     bd = for-each-ref --sort=-committerdate refs/remotes/
+    stash-all = stash save --include-untracked
 [core]
     autocrlf = input
     whitespace = cr-at-eol
@@ -27,8 +10,15 @@
     pager = diff-so-fancy | less --tabs=4 -RFX
 [push]
     default = simple
+    followTags = true
 [merge]
     tool = vimdiff
+
+    # Standard diff is two sets of final changes. This introduces the original text before each side's changes.
+    # https://git-scm.com/docs/git-config#git-config-mergeconflictStyle
+    conflictstyle = diff3
+[status]
+    showUntrackedFiles = all
 [color]
     ui = auto
 [color "branch"]
@@ -44,4 +34,4 @@
 [diff]
     compactionHeuristic = true
 [fetch]
-	prune = true
+    prune = true
