@@ -103,6 +103,7 @@ alias vim='vim --servername VIM'
 alias v='vim --remote'
 alias nevermind='git reset --hard HEAD && git clean -d -f'
 alias t='tmux -2 attach || tmux -2'
+alias yupi='yarn upgrade-interactive'
 
 # Debian/Ubuntu
 alias as='apt-cache search'
