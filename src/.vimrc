@@ -215,6 +215,10 @@ endif
 
 set backupcopy=yes
 
+"Maintain undo history between sessions
+set undofile
+set undodir=~/.vim/undodir
+
 " Window movement shortcuts
 " move to the window in the direction shown, or create a new window
 function! WinMove(key)

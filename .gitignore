@@ -2,3 +2,4 @@ src/.vim/.netrwhist
 *.swp
 src/.zsh/cache/
 src/.vim/plugged
+src/.vim/undodir

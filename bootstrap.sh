@@ -34,3 +34,6 @@ if [ ! -d "$HOME/.diff-so-fancy" ]; then
     mkdir -p $HOME/bin
     ln -s $HOME/.diff-so-fancy/diff-so-fancy $HOME/bin/diff-so-fancy
 fi
+
+# Vim
+mkdir -p $HOME/.vim/undodir
