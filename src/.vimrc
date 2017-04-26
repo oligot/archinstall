@@ -235,6 +235,10 @@ map <silent> <C-j> :call WinMove('j')<cr>
 map <silent> <C-k> :call WinMove('k')<cr>
 map <silent> <C-l> :call WinMove('l')<cr>
 
+" Make `jj` and `jk` throw you into normal mode
+inoremap jj <esc>
+inoremap jk <esc>
+
 "Tlist
 let Tlist_Show_One_File=1
 let Tlist_Use_Right_Window=1
