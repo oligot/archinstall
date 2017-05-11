@@ -3,3 +3,4 @@ src/.vim/.netrwhist
 src/.zsh/cache/
 src/.vim/plugged
 src/.vim/undodir
+src/.vim/autoload

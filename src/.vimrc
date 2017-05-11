@@ -278,7 +278,15 @@ nnoremap <leader><space> <C-^>
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
 
+"vv to generate new vertical split
+nnoremap <silent> vv <C-w>v
+
 "Plug
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source ~/.vimrc
+endif
 call plug#begin('~/.vim/plugged')
 Plug 'vim-airline/vim-airline'
 Plug 'editorconfig/editorconfig-vim'
@@ -314,6 +322,7 @@ Plug 'mhinz/vim-grepper'
 Plug 'w0rp/ale'
 Plug 'rhysd/committia.vim'
 Plug 'terryma/vim-expand-region'
+Plug 'christoomey/vim-tmux-navigator'
 call plug#end()
 
 cabbrev lvim
