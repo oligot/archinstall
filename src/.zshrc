@@ -20,7 +20,7 @@ ZSH_THEME="oli"
 # DISABLE_LS_COLORS="true"
 
 # Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
+DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
 # ENABLE_CORRECTION="true"
@@ -51,7 +51,7 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-export PATH="$PATH:$HOME/bin:/usr/local/bin:/usr/lib/tracker:$ERL_G/bin:/opt/maven/bin:/usr/local/go/bin:$GOPATH/bin:$HOME/.local/share/umake/bin:$HOME/Library/Android/sdk/platform-tools/"
+export PATH="$PATH:$HOME/bin:/usr/local/bin:/usr/lib/tracker:$ERL_G/bin:/opt/maven/bin:/usr/local/go/bin:$GOPATH/bin:$HOME/.local/share/umake/bin:$HOME/Library/Android/sdk/platform-tools/:$HOME/.local/bin"
 export GOPATH=$HOME/go
 export MANPATH=$MANPATH:/usr/local/share/man
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -93,6 +93,7 @@ export LESS_TERMCAP_ue=$'\E[0m'        # fin
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+alias c='clear'
 alias df='df -h'
 alias dodo='sudo /sbin/shutdown -h now'
 alias du='du -h'
@@ -102,7 +103,7 @@ alias r='npm run'
 alias vim='vim --servername VIM'
 alias v='vim --remote'
 alias nevermind='git reset --hard HEAD && git clean -d -f'
-alias t='tmux -2 attach || tmux -2'
+alias t='tmux -2'
 alias yupi='yarn upgrade-interactive'
 
 # Debian/Ubuntu
