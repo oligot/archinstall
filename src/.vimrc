@@ -375,20 +375,12 @@ endif
 
 "Asynchronous Lint Engine
 let g:ale_linters = {'javascript': ['eslint']}
+let g:ale_fixers = {'javascript': ['eslint']}
 let g:ale_sign_column_always = 1
 nmap <silent> <leader>l <Plug>(ale_previous_wrap)
 nmap <silent> <leader>k <Plug>(ale_next_wrap)
 
-function! FixJS()
-    "Save current cursor position"
-    let l:winview = winsaveview()
-    "run eslint fix on current buffer"
-    ! $(npm bin)/eslint --fix %
-    "Restore cursor position"
-    call winrestview(l:winview)
-endfunction
-command! FixJS :call FixJS()
-nmap <leader>jf :FixJS<cr>
+nmap <leader>jf <Plug>(ale_fix)
 
 "Tern
 nmap <leader>f :TernDef<cr>
