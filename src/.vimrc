@@ -399,3 +399,6 @@ nnoremap <leader>g :Grepper -tool rg -grepprg rg --no-heading --vimgrep -i `git 
 nnoremap <leader>* :Grepper -tool rg -cword -noprompt<cr>
 nmap gs  <plug>(GrepperOperator)
 xmap gs  <plug>(GrepperOperator)
+
+"Vue
+autocmd BufRead,BufNewFile *.vue setlocal filetype=vue.html.javascript
