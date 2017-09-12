@@ -217,7 +217,10 @@ set backupcopy=yes
 
 "Maintain undo history between sessions
 set undofile
-set undodir=~/.vim/undodir
+set undodir^=~/.vim/undo//
+
+set directory^=~/.vim/swp//
+set backupdir^=~/.vim/backup//
 
 " Window movement shortcuts
 " move to the window in the direction shown, or create a new window

@@ -36,7 +36,9 @@ if [ ! -d "$HOME/.diff-so-fancy" ]; then
 fi
 
 # Vim
-mkdir -p $HOME/.vim/undodir
+mkdir -p $HOME/.vim/undo
+mkdir -p $HOME/.vim/swp
+mkdir -p $HOME/.vim/backup
 
 # Tmux
 if [ ! -d "$HOME/.tmux/plugins/tpm" ]; then
