@@ -97,7 +97,7 @@ alias c='clear'
 alias df='df -h'
 alias dodo='sudo /sbin/shutdown -h now'
 alias du='du -h'
-alias gpa='git add . && git commit && git push'
+alias gpa='git add . && git commit -v && git push'
 alias gdmb='git branch --merged master | grep -v "master" | xargs -n 1 git branch -d' # Delete local branches which have already been merged into master
 alias r='npm run'
 #alias vim='vim --servername VIM'
@@ -105,7 +105,7 @@ alias s='npm start'
 alias v='vim'
 alias nevermind='git reset --hard HEAD && git clean -d -f'
 alias t='tmux -2'
-alias yupi='yarn upgrade-interactive'
+alias yupi='yarn upgrade-interactive --latest'
 
 # Debian/Ubuntu
 alias as='apt-cache search'
