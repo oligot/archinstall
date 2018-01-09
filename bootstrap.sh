@@ -22,6 +22,9 @@ fi
 if [ ! -d "${HOME}/.oh-my-zsh/custom/plugins/zsh-autosuggestions" ]; then
     git clone https://github.com/zsh-users/zsh-autosuggestions.git ${HOME}/.oh-my-zsh/custom/plugins/zsh-autosuggestions
 fi
+if [ ! -d "${HOME}/.oh-my-zsh/custom/plugins/zsh-you-should-use" ]; then
+    git clone https://github.com/MichaelAquilina/zsh-you-should-use.git ${HOME}/.oh-my-zsh/custom/plugins/zsh-you-should-use
+fi
 rm -f $HOME/.oh-my-zsh/themes/oli.zsh-theme
 ln -s $pwd/oli.zsh-theme $HOME/.oh-my-zsh/themes
 

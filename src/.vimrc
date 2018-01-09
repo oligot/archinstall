@@ -154,8 +154,8 @@ set expandtab
 set cino=>5n-3f0^-2{2
 set modeline
 
-au FileType html,php,vim,javascript,scss,css,xml,vue setl shiftwidth=2
-au FileType html,php,vim,javascript,scss,css,xml,vue setl tabstop=2
+au FileType html,php,vim,javascript,json,scss,css,xml,vue,pug setl shiftwidth=2
+au FileType html,php,vim,javascript,json,scss,css,xml,vue,pug setl tabstop=2
 
 augroup filetype
 	au BufRead *.m        set ft=mercury
@@ -282,7 +282,7 @@ vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
 
 "vv to generate new vertical split
-nnoremap <silent> vv <C-w>v
+nnoremap <silent> <leader>q <C-w>v
 
 "Plug
 if empty(glob('~/.vim/autoload/plug.vim'))
@@ -326,6 +326,9 @@ Plug 'w0rp/ale'
 Plug 'rhysd/committia.vim'
 Plug 'terryma/vim-expand-region'
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'gorkunov/smartpairs.vim'
+Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+Plug 'digitaltoad/vim-pug'
 call plug#end()
 
 cabbrev lvim
@@ -365,14 +368,14 @@ map g* <Plug>(incsearch-nohl-g*)
 map g# <Plug>(incsearch-nohl-g#)
 
 " The Silver Searcher
-if executable('ag')
-  " Use ag over grep
-  set grepprg=ag\ --nogroup\ --nocolor
+if executable('rg')
+  " Use rg over grep
+  set grepprg=rg\ --color=never
 
-  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+  " Use rg in CtrlP for listing files. Lightning fast and respects .gitignore
+  let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'
 
-  " ag is fast enough that CtrlP doesn't need to cache
+  " rg is fast enough that CtrlP doesn't need to cache
   let g:ctrlp_use_caching = 0
 endif
 
