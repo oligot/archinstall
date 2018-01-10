@@ -69,6 +69,9 @@ set cursorline
 hi Pmenu guibg=#333333
 hi PmenuSel guibg=#555555 guifg=#ffffff
 
+"Color column
+hi ColorColumn ctermbg=lightgrey guibg=lightgrey
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " VIM userinterface
@@ -148,14 +151,14 @@ let g:javascript_conceal_prototype = "#"
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Text options
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set tabstop=8
-set shiftwidth=4
+set colorcolumn=81
+set textwidth=80
+set nowrap
+set tabstop=2
+set shiftwidth=2
 set expandtab
 set cino=>5n-3f0^-2{2
 set modeline
-
-au FileType html,php,vim,javascript,json,scss,css,xml,vue,pug setl shiftwidth=2
-au FileType html,php,vim,javascript,json,scss,css,xml,vue,pug setl tabstop=2
 
 augroup filetype
 	au BufRead *.m        set ft=mercury
@@ -295,8 +298,6 @@ Plug 'vim-airline/vim-airline'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'mattn/emmet-vim'
 Plug 'haya14busa/incsearch.vim'
-Plug 'pangloss/vim-javascript'
-Plug 'elzr/vim-json'
 Plug 'wincent/terminus'
 Plug 'ternjs/tern_for_vim', { 'do': 'npm install' }
 Plug 'edkolev/tmuxline.vim'
@@ -308,8 +309,6 @@ Plug 'suan/vim-instant-markdown'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'isRuslan/vim-es6'
-Plug 'posva/vim-vue'
-Plug 'othree/html5.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'ryanoasis/vim-devicons'
@@ -328,7 +327,8 @@ Plug 'terryma/vim-expand-region'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'gorkunov/smartpairs.vim'
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
-Plug 'digitaltoad/vim-pug'
+Plug 'sheerun/vim-polyglot'
+Plug 'Raimondi/delimitMate'
 call plug#end()
 
 cabbrev lvim
@@ -389,7 +389,7 @@ nmap <silent> <leader>k <Plug>(ale_next_wrap)
 nmap <leader>jf <Plug>(ale_fix)
 
 "Tern
-nmap <leader>f :TernDef<cr>
+nmap <leader>t :TernDef<cr>
 
 "Instant Markdown
 let g:instant_markdown_autostart = 0
@@ -405,3 +405,6 @@ xmap gs  <plug>(GrepperOperator)
 
 "Vue
 autocmd BufRead,BufNewFile *.vue setlocal filetype=vue.html.javascript
+
+"Prettier
+nmap <leader>f :PrettierAsync<cr>
