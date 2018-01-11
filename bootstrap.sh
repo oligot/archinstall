@@ -47,3 +47,9 @@ mkdir -p $HOME/.vim/backup
 if [ ! -d "$HOME/.tmux/plugins/tpm" ]; then
     git clone https://github.com/tmux-plugins/tpm $HOME/.tmux/plugins/tpm
 fi
+
+# i3
+ln -s $pwd/i3 ~/.config/i3
+
+# polybar
+ln -s $pwd/polybar ~/.config/polybar
