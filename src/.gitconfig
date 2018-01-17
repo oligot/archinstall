@@ -32,5 +32,6 @@
     path = ~/.gitconfig.local
 [diff]
     compactionHeuristic = true
+	colorMoved = zebra
 [fetch]
     prune = true
