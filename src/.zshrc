@@ -104,7 +104,6 @@ alias r='npm run'
 alias s='npm start'
 alias v='vim'
 alias nevermind='git reset --hard HEAD && git clean -d -f'
-alias t='tmux -2'
 alias yupi='yarn upgrade-interactive --latest'
 
 # Debian/Ubuntu

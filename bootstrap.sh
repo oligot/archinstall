@@ -4,12 +4,18 @@ pwd=`pwd`
 
 # Dotfiles
 for i in `ls -A src`; do
-    basename=`basename $i`
-    rm -rf $HOME/$basename
     target="$pwd/src/$i"
     name="$HOME/$i"
     echo "Linking $target to $name"
-    ln -s $target $name
+    ln -sf $target $HOME
+done
+
+# bin
+for i in `ls -A bin`; do
+    target="$pwd/bin/$i"
+    name="$HOME/bin/$i"
+    echo "Linking $target to $name"
+    ln -sf $target $HOME/bin
 done
 
 # Oh My Zsh
@@ -49,7 +55,7 @@ if [ ! -d "$HOME/.tmux/plugins/tpm" ]; then
 fi
 
 # i3
-ln -s $pwd/i3 ~/.config/i3
+ln -sf $pwd/i3 ~/.config
 
 # polybar
-ln -s $pwd/polybar ~/.config/polybar
+ln -sf $pwd/polybar ~/.config

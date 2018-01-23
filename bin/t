@@ -1,0 +1,16 @@
+#!/bin/sh
+
+pwd=`pwd`
+SESSION=`basename $pwd` 
+
+# create a new session if there isn't one already
+tmux list-sessions | grep "^$SESSION\:.*$" > /dev/null
+if [ "$?" -ne 0 ]; then
+  tmux -2 new-session -s $SESSION -d
+  tmux send-keys "$EDITOR" C-m
+  tmux split-window
+  tmux split-window -h
+fi
+
+# attach to session
+tmux attach -t "$SESSION"
