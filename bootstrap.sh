@@ -11,28 +11,35 @@ for i in `ls -A src`; do
 done
 
 # bin
+mkdir -p $HOME/bin
 for i in `ls -A bin`; do
     target="$pwd/bin/$i"
     name="$HOME/bin/$i"
     echo "Linking $target to $name"
-    ln -sf $target $HOME/bin
+    ln -sf $target $HOME/bin/$i
 done
 
 # Oh My Zsh
+ZSH_CUSTOM="${HOME}/.oh-my-zsh/custom"
 if [ ! -d "$HOME/.oh-my-zsh" ]; then
     git clone https://github.com/robbyrussell/oh-my-zsh.git $HOME/.oh-my-zsh
 fi
-if [ ! -d "${HOME}/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting" ]; then
-    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${HOME}/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
+if [ ! -d "${ZSH_CUSTOM}/plugins/zsh-syntax-highlighting" ]; then
+    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM}/plugins/zsh-syntax-highlighting
 fi
-if [ ! -d "${HOME}/.oh-my-zsh/custom/plugins/zsh-autosuggestions" ]; then
-    git clone https://github.com/zsh-users/zsh-autosuggestions.git ${HOME}/.oh-my-zsh/custom/plugins/zsh-autosuggestions
+if [ ! -d "${ZSH_CUSTOM}/plugins/zsh-autosuggestions" ]; then
+    git clone https://github.com/zsh-users/zsh-autosuggestions.git ${ZSH_CUSTOM}/plugins/zsh-autosuggestions
 fi
-if [ ! -d "${HOME}/.oh-my-zsh/custom/plugins/zsh-you-should-use" ]; then
-    git clone https://github.com/MichaelAquilina/zsh-you-should-use.git ${HOME}/.oh-my-zsh/custom/plugins/zsh-you-should-use
+if [ ! -d "${ZSH_CUSTOM}/plugins/you-should-use" ]; then
+    git clone https://github.com/MichaelAquilina/zsh-you-should-use.git ${ZSH_CUSTOM}/plugins/you-should-use
 fi
-rm -f $HOME/.oh-my-zsh/themes/oli.zsh-theme
-ln -s $pwd/oli.zsh-theme $HOME/.oh-my-zsh/themes
+if [ ! -d "${ZSH_CUSTOM}/plugins/zsh-docker-aliases" ]; then
+    git clone https://github.com/akarzim/zsh-docker-aliases ${ZSH_CUSTOM}/plugins/zsh-docker-aliases
+fi
+if [ ! -d "$ZSH_CUSTOM/themes/spaceship-prompt" ]; then
+  git clone https://github.com/denysdovhan/spaceship-prompt.git $ZSH_CUSTOM/themes/spaceship-prompt
+fi
+ln -sf "$ZSH_CUSTOM/themes/spaceship-prompt/spaceship.zsh-theme" "$ZSH_CUSTOM/themes/spaceship.zsh-theme"
 
 # Git
 if [ ! -d "$HOME/.git-radar" ]; then

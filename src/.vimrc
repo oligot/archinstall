@@ -9,16 +9,6 @@
 "Get out of VI's compatible mode..
 set nocompatible
 
-"Sets how many lines of history VIM har to remember
-set history=1000
-
-"Enable filetype plugin
-filetype plugin on
-filetype indent on
-
-"Set to auto read when a file is changed from the outside
-set autoread
-
 "Keep a .viminfo file.
 set viminfo='1000,f1,<500  
 
@@ -52,8 +42,6 @@ autocmd BufReadPost *
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Colors and Fonts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"Enable syntax hl
-syntax enable
 
 set t_Co=256
 
@@ -79,14 +67,8 @@ hi ColorColumn ctermbg=lightgrey guibg=lightgrey
 "Set 7 lines to the curors - when moving vertical..
 set so=7
 
-"Turn on WiLd menu
-set wildmenu
-
 "Wildmode
 set wildmode=list:longest
-
-"Always show current position
-set ruler
 
 "The commandbar is 1 high
 set cmdheight=1
@@ -101,15 +83,11 @@ set lazyredraw
 "Change buffer - without saving
 set hid
 
-"Set backspace
-set backspace=eol,start,indent
-
 "Bbackspace and cursor keys wrap to
 set whichwrap+=<,>,h,l
 
 "Ignore case when searching
 set ignorecase
-set incsearch
 
 "Set magic on
 set magic
@@ -122,18 +100,11 @@ set t_vb=
 "show matching bracets
 set showmatch
 
-"Enhanced switch using %
-runtime macros/matchit.vim
-
 "Catch trailing whitespace
-set listchars=tab:>-,trail:·,eol:$
 nmap <silent> <leader>c :set nolist!<CR>
 
 "How many tenths of a second to blink
 set mat=2
-
-"Nice statusbar
-set laststatus=2
 
 "Don't show mode on the last line
 set noshowmode
@@ -166,18 +137,12 @@ augroup END
 
 "autocmd BufNewFile,BufRead *.json set ft=javascript
 
-set smarttab
 set lbr
 set tw=500
 
    """"""""""""""""""""""""""""""
    " Indent
    """"""""""""""""""""""""""""""
-   "Auto indent
-   set ai
-
-   "Smart indet
-   "set si
 
    "C-style indeting
    set cindent
@@ -274,10 +239,13 @@ let g:miniBufExplMapWindowNavArrows = 1
 let g:miniBufExplMapCTabSwitchBufs = 1
 let g:miniBufExplModSelTarget = 1 
 
+nnoremap <C-p> :Files<CR>
 "Buffers
 nnoremap <silent> <leader>d :bdelete<CR>
-nnoremap <silent> <leader>, :CtrlPBuffer<CR>
-nnoremap <silent> <leader>v :CtrlPMRUFiles<CR>
+nnoremap <Leader>, :Buffers<CR>
+nnoremap <Leader>v :History<CR>
+" nnoremap <silent> <leader>, :CtrlPBuffer<CR>
+" nnoremap <silent> <leader>v :CtrlPMRUFiles<CR>
 nnoremap <leader><space> <C-^>
 
 "Move selected block up/down in Visual block mode
@@ -302,6 +270,7 @@ Plug 'wincent/terminus'
 Plug 'ternjs/tern_for_vim', { 'do': 'npm install' }
 Plug 'edkolev/tmuxline.vim'
 Plug 'mbbill/undotree'
+Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
@@ -309,10 +278,6 @@ Plug 'suan/vim-instant-markdown'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'isRuslan/vim-es6'
-Plug 'scrooloose/nerdtree'
-Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'ryanoasis/vim-devicons'
-Plug 'ctrlpvim/ctrlp.vim'
 Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'tpope/vim-surround'
 Plug 'AndrewRadev/splitjoin.vim'
@@ -329,6 +294,15 @@ Plug 'gorkunov/smartpairs.vim'
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 Plug 'sheerun/vim-polyglot'
 Plug 'Raimondi/delimitMate'
+Plug 'ryanoasis/vim-devicons'
+Plug 'andymass/vim-matchup'
+Plug 'rbong/vim-flog'
+Plug 'xojs/vim-xo'
+Plug 'rhysd/git-messenger.vim'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+" Plug 'Shougo/denite.nvim'
+" Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
 call plug#end()
 
 cabbrev lvim
@@ -352,6 +326,10 @@ map <leader>r :call RangerChooser()<CR>
 "toggle gundo
 nnoremap <leader>u :UndotreeToggle<CR>
 
+"Consistent downwards/upwards
+nnoremap <expr> n 'Nn'[v:searchforward]
+nnoremap <expr> N 'nN'[v:searchforward]
+
 "Airline
 let g:airline_powerline_fonts = 1
 
@@ -367,21 +345,9 @@ map #  <Plug>(incsearch-nohl-#)
 map g* <Plug>(incsearch-nohl-g*)
 map g# <Plug>(incsearch-nohl-g#)
 
-" The Silver Searcher
-if executable('rg')
-  " Use rg over grep
-  set grepprg=rg\ --color=never
-
-  " Use rg in CtrlP for listing files. Lightning fast and respects .gitignore
-  let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'
-
-  " rg is fast enough that CtrlP doesn't need to cache
-  let g:ctrlp_use_caching = 0
-endif
-
 "Asynchronous Lint Engine
-let g:ale_linters = {'javascript': ['eslint']}
-let g:ale_fixers = {'javascript': ['eslint']}
+let g:ale_linters = {'javascript': ['eslint'], 'typescript': ['eslint']}
+let g:ale_fixers = {'javascript': ['eslint'], 'typescript': ['eslint']}
 let g:ale_sign_column_always = 1
 nmap <silent> <leader>l <Plug>(ale_previous_wrap)
 nmap <silent> <leader>k <Plug>(ale_next_wrap)
@@ -405,6 +371,11 @@ xmap gs  <plug>(GrepperOperator)
 
 "Vue
 autocmd BufRead,BufNewFile *.vue setlocal filetype=vue.html.javascript
+autocmd BufRead,BufNewFile *.vue syntax sync fromstart
+let g:vue_pre_processors = ['scss', 'typescript']
 
 "Prettier
 nmap <leader>f :PrettierAsync<cr>
+
+"Markdown
+let g:vim_markdown_conceal = 0

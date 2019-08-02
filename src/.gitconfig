@@ -2,7 +2,6 @@
     name = Olivier Ligot
 [alias]
     bd = for-each-ref --sort=-committerdate refs/remotes/
-    stash-all = stash save --include-untracked
 [core]
     autocrlf = input
     whitespace = cr-at-eol
@@ -32,6 +31,6 @@
     path = ~/.gitconfig.local
 [diff]
     compactionHeuristic = true
-	colorMoved = zebra
+    colorMoved = zebra
 [fetch]
     prune = true

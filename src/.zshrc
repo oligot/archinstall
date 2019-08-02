@@ -5,7 +5,25 @@ export ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="oli"
+ZSH_THEME="spaceship"
+
+SPACESHIP_PROMPT_ADD_NEWLINE="false"
+SPACESHIP_PROMPT_SEPARATE_LINE="false"
+# https://denysdovhan.com/spaceship-prompt/docs/Options.html#order
+SPACESHIP_PROMPT_ORDER=(
+time          # Time stamps section
+user          # Username section
+dir           # Current directory section
+host          # Hostname section
+git           # Git section (git_branch + git_status)
+package       # Package version
+exec_time     # Execution time
+line_sep      # Line break
+vi_mode       # Vi-mode indicator
+jobs          # Background jobs indicator
+exit_code     # Exit code section
+char          # Prompt character
+)
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -45,7 +63,7 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(docker git git-extras go fasd mvn npm tmux zsh-syntax-highlighting zsh-autosuggestions history-substring-search vi-mode thefuck z archlinux fedora extract zsh-better-npm-completion)
+plugins=(docker zsh-docker-aliases git git-extras go fasd mvn npm tmux zsh-syntax-highlighting zsh-autosuggestions history-substring-search vi-mode thefuck z archlinux fedora extract yarn you-should-use sudo)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -74,6 +92,7 @@ export MANPATH=$MANPATH:/usr/local/share/man
 export EDITOR="vim"
 export BROWSER="firefox"
 export ORACLE_HOME="/usr/lib/oracle/11.2/client64"
+export FZF_DEFAULT_COMMAND='rg --files --follow'
 
 #Pager
 export LESS=-FSRX
@@ -93,24 +112,18 @@ export LESS_TERMCAP_ue=$'\E[0m'        # fin
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias c='clear'
 alias df='df -h'
 alias dodo='sudo /sbin/shutdown -h now'
 alias du='du -h'
+alias gdcw='git diff --cached -w' # Overwrite oh-my-zsh plugin
+alias gdw='git diff -w' # Overwrite oh-my-zsh plugin
 alias gpa='git add . && git commit -v && git push'
-alias gdmb='git branch --merged master | grep -v "master" | xargs -n 1 git branch -d' # Delete local branches which have already been merged into master
-alias r='npm run'
-#alias vim='vim --servername VIM'
-alias s='npm start'
+alias gstau='git stash push --include-untracked'
+alias ls='exa'
+alias rm='rm -I'
+alias s='yarn start'
 alias v='vim'
-alias nevermind='git reset --hard HEAD && git clean -d -f'
 alias yupi='yarn upgrade-interactive --latest'
-
-# Debian/Ubuntu
-alias as='apt-cache search'
-alias ai='sudo apt-get install'
-alias ar='sudo apt-get remove'
-alias auu='sudo apt-get update && sudo apt-get upgrade'
 
 # Global aliases -- These do not have to be
 # at the beginning of the command line.
@@ -167,3 +180,10 @@ zstyle ':completion:*' rehash true
 [[ -s "/home/oli/.gvm/scripts/gvm" ]] && source "/home/oli/.gvm/scripts/gvm"
 
 export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"  # Added by n-install (see http://git.io/n-install-repo).
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+export VOLTA_HOME="$HOME/.volta"
+[ -s "$VOLTA_HOME/load.sh" ] && . "$VOLTA_HOME/load.sh"
+
+export PATH="$VOLTA_HOME/bin:$PATH"
