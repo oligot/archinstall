@@ -286,7 +286,7 @@ Plug 'kana/vim-textobj-function'
 Plug 'thinca/vim-textobj-function-javascript'
 Plug 'jceb/vim-textobj-uri'
 Plug 'mhinz/vim-grepper'
-Plug 'w0rp/ale'
+Plug 'dense-analysis/ale'
 Plug 'rhysd/committia.vim'
 Plug 'terryma/vim-expand-region'
 Plug 'christoomey/vim-tmux-navigator'
@@ -301,6 +301,7 @@ Plug 'xojs/vim-xo'
 Plug 'rhysd/git-messenger.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+Plug 'lervag/vimtex'
 " Plug 'Shougo/denite.nvim'
 " Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
 call plug#end()
@@ -379,3 +380,6 @@ nmap <leader>f :PrettierAsync<cr>
 
 "Markdown
 let g:vim_markdown_conceal = 0
+
+"Disable LaTeX-Box (comes with polyglot)
+let g:polyglot_disabled = ['latex']
