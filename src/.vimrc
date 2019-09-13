@@ -293,6 +293,7 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'gorkunov/smartpairs.vim'
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 Plug 'sheerun/vim-polyglot'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'Raimondi/delimitMate'
 Plug 'ryanoasis/vim-devicons'
 Plug 'andymass/vim-matchup'
