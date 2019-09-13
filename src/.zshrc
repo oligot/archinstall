@@ -63,7 +63,7 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(docker zsh-docker-aliases git git-extras go fasd mvn npm tmux zsh-syntax-highlighting zsh-autosuggestions history-substring-search vi-mode thefuck z archlinux fedora extract yarn you-should-use sudo)
+plugins=(docker zsh-docker-aliases kubectl git git-extras go fasd mvn npm tmux zsh-syntax-highlighting zsh-autosuggestions history-substring-search vi-mode thefuck z archlinux fedora extract yarn you-should-use sudo)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -92,7 +92,9 @@ export MANPATH=$MANPATH:/usr/local/share/man
 export EDITOR="vim"
 export BROWSER="firefox"
 export ORACLE_HOME="/usr/lib/oracle/11.2/client64"
-export FZF_DEFAULT_COMMAND='rg --files --follow'
+export FZF_DEFAULT_COMMAND='rg --files --follow --hidden'
+# add support for ctrl+o to open selected file in VS Code
+export FZF_DEFAULT_OPTS="--bind='ctrl-o:execute(code {})+abort'"
 
 #Pager
 export LESS=-FSRX
@@ -112,6 +114,7 @@ export LESS_TERMCAP_ue=$'\E[0m'        # fin
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+alias cat='bat'
 alias df='df -h'
 alias dodo='sudo /sbin/shutdown -h now'
 alias du='du -h'
@@ -120,8 +123,10 @@ alias gdw='git diff -w' # Overwrite oh-my-zsh plugin
 alias gpa='git add . && git commit -v && git push'
 alias gstau='git stash push --include-untracked'
 alias ls='exa'
+alias preview="fzf --preview 'bat --color=always {}'"
 alias rm='rm -I'
 alias s='yarn start'
+alias sudo='sudo '
 alias v='vim'
 alias yupi='yarn upgrade-interactive --latest'
 
