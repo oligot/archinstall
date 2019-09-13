@@ -66,3 +66,12 @@ ln -sf $pwd/i3 ~/.config
 
 # polybar
 ln -sf $pwd/polybar ~/.config
+
+# Redshift
+mkdir -p ~/.config/redshift
+ln -sf $pwd/redshift/redshift.conf ~/.config/redshift/
+mkdir -p ~/.config/systemd/user/
+ln -sf $pwd/redshift/redshift.service ~/.config/systemd/user/
+
+# Dunst
+ln -sf $pwd/dunst ~/.config
