@@ -63,7 +63,7 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(docker zsh-docker-aliases kubectl git git-extras go fasd mvn npm tmux zsh-syntax-highlighting zsh-autosuggestions history-substring-search vi-mode thefuck z archlinux fedora extract yarn you-should-use sudo)
+plugins=(docker kubectl git git-extras go fasd mvn npm tmux history-substring-search vi-mode thefuck archlinux systemd extract yarn sudo)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -91,7 +91,6 @@ export MANPATH=$MANPATH:/usr/local/share/man
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
 export EDITOR="vim"
 export BROWSER="firefox"
-export ORACLE_HOME="/usr/lib/oracle/11.2/client64"
 export FZF_DEFAULT_COMMAND='rg --files --follow --hidden'
 # add support for ctrl+o to open selected file in VS Code
 export FZF_DEFAULT_OPTS="--bind='ctrl-o:execute(code {})+abort'"
@@ -122,6 +121,8 @@ alias gdcw='git diff --cached -w' # Overwrite oh-my-zsh plugin
 alias gdw='git diff -w' # Overwrite oh-my-zsh plugin
 alias gpa='git add . && git commit -v && git push'
 alias gstau='git stash push --include-untracked'
+alias jc='sudo journalctl -u'
+alias jcf='sudo journalctl -f -u'
 alias ls='exa'
 alias preview="fzf --preview 'bat --color=always {}'"
 alias rm='rm -I'
@@ -188,7 +189,28 @@ export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PR
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-export VOLTA_HOME="$HOME/.volta"
-[ -s "$VOLTA_HOME/load.sh" ] && . "$VOLTA_HOME/load.sh"
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /usr/bin/vault vault
 
-export PATH="$VOLTA_HOME/bin:$PATH"
+# zplug
+
+source ~/.zplug/init.zsh
+
+zplug "zsh-users/zsh-syntax-highlighting"
+zplug "zsh-users/zsh-autosuggestions"
+zplug "MichaelAquilina/zsh-you-should-use"
+zplug "akarzim/zsh-docker-aliases"
+zplug "denisidoro/navi"
+zplug "denysdovhan/spaceship-prompt", use:spaceship.zsh, from:github, as:theme
+zplug "changyuheng/fz", defer:1
+zplug "rupa/z", use:z.sh
+
+# Install plugins if there are plugins that have not been installed
+if ! zplug check --verbose; then
+    printf "Install? [y/N]: "
+    if read -q; then
+        echo; zplug install
+    fi
+fi
+
+zplug load
