@@ -303,8 +303,7 @@ Plug 'rhysd/git-messenger.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'lervag/vimtex'
-" Plug 'Shougo/denite.nvim'
-" Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
+Plug 'natebosch/vim-lsc'
 call plug#end()
 
 cabbrev lvim
@@ -384,3 +383,29 @@ let g:vim_markdown_conceal = 0
 
 "Disable LaTeX-Box (comes with polyglot)
 let g:polyglot_disabled = ['latex']
+
+"LSC
+let g:lsc_server_commands = {
+ \  'javascript': {
+ \    'command': 'typescript-language-server --stdio',
+ \    'log_level': -1,
+ \    'suppress_stderr': v:true,
+ \  }
+ \}
+let g:lsc_auto_map = {
+ \  'GoToDefinition': 'gd',
+ \  'FindReferences': 'gr',
+ \  'Rename': 'gR',
+ \  'ShowHover': 'K',
+ \  'Completion': 'omnifunc',
+ \}
+let g:lsc_enable_autocomplete  = v:true
+let g:lsc_enable_diagnostics   = v:false
+let g:lsc_reference_highlights = v:false
+let g:lsc_trace_level          = 'off'
+
+set completeopt=menu,menuone,noinsert,noselect
+
+"vim-go
+let g:go_def_mode='gopls'
+let g:go_info_mode='gopls'
