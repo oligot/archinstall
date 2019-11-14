@@ -6,7 +6,7 @@
     autocrlf = input
     whitespace = cr-at-eol
     excludesfile = ~/.gitignore
-    pager = diff-so-fancy | less --tabs=4 -RFX
+    pager = delta --dark
 [push]
     default = simple
 [merge]
@@ -34,3 +34,8 @@
     colorMoved = zebra
 [fetch]
     prune = true
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
