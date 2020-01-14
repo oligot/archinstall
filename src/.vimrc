@@ -290,6 +290,7 @@ Plug 'dense-analysis/ale'
 Plug 'rhysd/committia.vim'
 Plug 'terryma/vim-expand-region'
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'christoomey/vim-tmux-runner'
 Plug 'gorkunov/smartpairs.vim'
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 Plug 'sheerun/vim-polyglot'
@@ -304,6 +305,8 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'lervag/vimtex'
 Plug 'natebosch/vim-lsc'
+Plug 'francoiscabrol/ranger.vim'
+" Plug 'mcchrish/nnn.vim'
 call plug#end()
 
 cabbrev lvim
@@ -313,16 +316,8 @@ cabbrev lvim
       \ <C-Left><C-Left><C-Left>
 
 "Ranger
-fun! RangerChooser()
-  silent !ranger --choosefile=/tmp/chosenfile `[ -z '%' ] && echo -n . || dirname %`
-  if filereadable('/tmp/chosenfile')
-    exec 'edit ' . system('cat /tmp/chosenfile')
-    call system('rm /tmp/chosenfile')
-  endif
-  redraw!
-endfun
-
-map <leader>r :call RangerChooser()<CR>
+let g:ranger_map_keys = 0
+map <leader>r :Ranger<CR>
 
 "toggle gundo
 nnoremap <leader>u :UndotreeToggle<CR>
@@ -376,7 +371,10 @@ autocmd BufRead,BufNewFile *.vue syntax sync fromstart
 let g:vue_pre_processors = ['scss', 'typescript']
 
 "Prettier
-nmap <leader>f :PrettierAsync<cr>
+autocmd FileType javascript,typescript,vue map <buffer> <leader>f :PrettierAsync<cr>
+
+"GoImports
+autocmd FileType go map <buffer> <leader>f :GoImports<cr>
 
 "Markdown
 let g:vim_markdown_conceal = 0
@@ -409,7 +407,7 @@ set completeopt=menu,menuone,noinsert,noselect
 "vim-go
 let g:go_def_mode='gopls'
 let g:go_info_mode='gopls'
-let g:go_fmt_command = "goimports"
+" let g:go_fmt_command = "goimports"
 let g:go_highlight_types = 1
 let g:go_highlight_fields = 1
 let g:go_highlight_functions = 1
@@ -419,3 +417,7 @@ let g:go_highlight_extra_types = 1
 let g:go_highlight_build_constraints = 1
 let g:go_highlight_generate_tags = 1
 let g:go_auto_type_info = 1
+let g:go_metalinter_command = "golangci-lint"
+
+"Treat .sql files as PostgreSQL
+let g:sql_type_default = 'pgsql'

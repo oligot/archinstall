@@ -113,6 +113,7 @@ export LESS_TERMCAP_ue=$'\E[0m'        # fin
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+alias bh=bitbucket-home
 alias cat='bat'
 alias df='df -h'
 alias dodo='sudo /sbin/shutdown -h now'
