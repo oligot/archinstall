@@ -45,11 +45,6 @@ autocmd BufReadPost *
 
 set t_Co=256
 
-if has("gui_running")
-	set guioptions-=T
-  colorscheme koehler
-endif
-
 "Highlight current
 set cursorline
 
@@ -307,7 +302,10 @@ Plug 'lervag/vimtex'
 Plug 'natebosch/vim-lsc'
 Plug 'francoiscabrol/ranger.vim'
 " Plug 'mcchrish/nnn.vim'
+Plug 'arcticicestudio/nord-vim'
 call plug#end()
+
+colorscheme nord
 
 cabbrev lvim
       \ lvim /\<lt><C-R><C-W>\>/gj
