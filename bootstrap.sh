@@ -19,9 +19,14 @@ for i in `ls -A bin`; do
     ln -sf $target $HOME/bin/$i
 done
 
-# Oh My Zsh
-if [ ! -d "$HOME/.oh-my-zsh" ]; then
-    git clone https://github.com/robbyrussell/oh-my-zsh.git $HOME/.oh-my-zsh
+# zplug
+if [ ! -d "$HOME/.zplug" ]; then
+  curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
+fi
+
+# Starship
+if ! starship --version > /dev/null; then
+  curl -fsSL https://starship.rs/install.sh | sudo bash
 fi
 
 # Vim
