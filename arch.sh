@@ -1,17 +1,17 @@
 #!/bin/sh
 
 echo "Updating system..."
-sudo pacman -Syu
+sudo pacman -Syu --noconfirm
 
 echo "Installing yay"
 mkdir -p $HOME/src
 cd $HOME/src/
-sudo pacman -S git fakeroot
+sudo pacman -S --noconfirm git fakeroot
 if [ ! -d "yay" ]; then
   git clone https://aur.archlinux.org/yay.git
 fi
 cd yay/
-makepkg -si
+makepkg -si --noconfirm
 
 echo "Installing dotfiles..."
 cd $HOME/src/
@@ -22,4 +22,4 @@ cd dotfiles/
 ./bootstrap.sh 
 
 echo "Installing additional softwares..."
-yay -S firefox evolution i3-wm vim zsh tmux tig git-delta-bin
+yay -S --noconfirm firefox evolution i3-wm vim zsh tmux tig git-delta-bin
