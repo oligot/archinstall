@@ -41,7 +41,7 @@ client.background #2d2d2d
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec gnome-terminal
+bindsym $mod+Return exec xfce4-terminal
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -53,7 +53,7 @@ bindsym $mod+Shift+q kill
 # installed.
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 bindsym $mod+d exec "rofi -combi-modi window,drun -show combi -modi combi"
-# bindsym $mod+Tab exec rofi -show window
+bindsym $mod+Tab exec rofi -show window
 
 # change focus
 bindsym $mod+h focus left
