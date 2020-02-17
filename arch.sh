@@ -6,7 +6,7 @@ sudo pacman -Syu --noconfirm
 echo "Installing yay"
 mkdir -p $HOME/src
 cd $HOME/src/
-sudo pacman -S --noconfirm git fakeroot
+sudo pacman -S --noconfirm git fakeroot base-devel
 if [ ! -d "yay" ]; then
   git clone https://aur.archlinux.org/yay.git
 fi
