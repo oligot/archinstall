@@ -13,3 +13,9 @@ This will
 * install yay
 * fetch and install the dotfiles
 * install additional softwares
+
+You can then change your default shell to zsh with
+```bash
+chsh -s /usr/bin/zsh
+
+```

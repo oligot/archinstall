@@ -28,6 +28,7 @@ fi
 if ! starship --version > /dev/null; then
   curl -fsSL https://starship.rs/install.sh | sudo bash
 fi
+ln -sf $pwd/starship/starship.toml ~/.config
 
 # Vim
 mkdir -p $HOME/.vim/undo
