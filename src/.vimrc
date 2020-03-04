@@ -303,6 +303,8 @@ Plug 'natebosch/vim-lsc'
 Plug 'francoiscabrol/ranger.vim'
 " Plug 'mcchrish/nnn.vim'
 Plug 'arcticicestudio/nord-vim'
+Plug 'preservim/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
 call plug#end()
 
 colorscheme nord
@@ -419,3 +421,6 @@ let g:go_metalinter_command = "golangci-lint"
 
 "Treat .sql files as PostgreSQL
 let g:sql_type_default = 'pgsql'
+
+"NERDTree
+map <C-n> :NERDTreeToggle<CR>
