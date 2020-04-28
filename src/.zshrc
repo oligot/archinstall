@@ -92,6 +92,7 @@ alias gdcw='git diff --cached -w' # Overwrite oh-my-zsh git plugin
 alias gdw='git diff -w' # Overwrite oh-my-zsh git plugin
 alias gpa='git add . && git commit -v && git push'
 alias gstau='git stash push --include-untracked'
+alias gwl='git worktree list'
 alias jc='sudo journalctl -u'
 alias jcf='sudo journalctl -f -u'
 alias l='ls -l'
@@ -99,7 +100,7 @@ alias la='ls -a'
 alias ls='exa'
 alias preview="fzf --preview 'bat --color=always {}'"
 alias rm='rm -I'
-alias s='yarn start'
+alias s='npm run serve'
 alias sudo='sudo '
 alias v='vim'
 alias yupi='yarn upgrade-interactive --latest'
@@ -178,4 +179,9 @@ autoload -Uz compinit && compinit
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/bin/vault vault
 
+# Associate suffixes with handlers for their files
+autoload -U zsh-mime-setup
+zsh-mime-setup
+
 eval "$(starship init zsh)"
+eval "$(pyenv virtualenv-init -)"
