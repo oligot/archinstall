@@ -163,7 +163,6 @@ endif
 "Switch syntax highlighting on, when the terminal has colors
 "Also switch on highlighting the last used search pattern.
 if &t_Co > 2 || has("gui_running")
-	syntax on
 	set hlsearch
 endif
 "}}}
@@ -262,7 +261,6 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'mattn/emmet-vim'
 Plug 'haya14busa/incsearch.vim'
 Plug 'wincent/terminus'
-Plug 'ternjs/tern_for_vim', { 'do': 'npm install' }
 Plug 'edkolev/tmuxline.vim'
 Plug 'mbbill/undotree'
 Plug 'tpope/vim-sensible'
@@ -287,7 +285,7 @@ Plug 'terryma/vim-expand-region'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'christoomey/vim-tmux-runner'
 Plug 'gorkunov/smartpairs.vim'
-Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+Plug 'prettier/vim-prettier', { 'do': 'npm install' }
 Plug 'sheerun/vim-polyglot'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'Raimondi/delimitMate'
@@ -305,9 +303,16 @@ Plug 'francoiscabrol/ranger.vim'
 Plug 'arcticicestudio/nord-vim'
 Plug 'preservim/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'mechatroner/rainbow_csv'
+Plug 'psf/black', { 'branch': 'stable', 'for': 'python' }
+Plug 'junegunn/goyo.vim'
 call plug#end()
 
 colorscheme nord
+
+" Italic comments
+" https://rsapkf.netlify.com/blog/enabling-italics-vim-tmux
+highlight Comment cterm=italic
 
 cabbrev lvim
       \ lvim /\<lt><C-R><C-W>\>/gj
@@ -370,10 +375,9 @@ autocmd BufRead,BufNewFile *.vue setlocal filetype=vue.html.javascript
 autocmd BufRead,BufNewFile *.vue syntax sync fromstart
 let g:vue_pre_processors = ['scss', 'typescript']
 
-"Prettier
+"Format
 autocmd FileType javascript,typescript,vue map <buffer> <leader>f :PrettierAsync<cr>
-
-"GoImports
+autocmd FileType python map <buffer> <leader>f :Black<cr>
 autocmd FileType go map <buffer> <leader>f :GoImports<cr>
 
 "Markdown
@@ -403,10 +407,11 @@ let g:lsc_reference_highlights = v:false
 let g:lsc_trace_level          = 'off'
 
 set completeopt=menu,menuone,noinsert,noselect
+set complete+=kspell
+autocmd FileType context setlocal spell spelllang=en,fr
+autocmd FileType gitcommit setlocal spell
 
 "vim-go
-let g:go_def_mode='gopls'
-let g:go_info_mode='gopls'
 " let g:go_fmt_command = "goimports"
 let g:go_highlight_types = 1
 let g:go_highlight_fields = 1
@@ -417,10 +422,31 @@ let g:go_highlight_extra_types = 1
 let g:go_highlight_build_constraints = 1
 let g:go_highlight_generate_tags = 1
 let g:go_auto_type_info = 1
-let g:go_metalinter_command = "golangci-lint"
+let g:go_metalinter_enabled = [
+    \ 'deadcode', 
+    \ 'errcheck', 
+    \ 'gosimple', 
+    \ 'govet', 
+    \ 'ineffassign', 
+    \ 'staticcheck', 
+    \'structcheck', 
+    \'typecheck', 
+    \'unused', 
+    \'varcheck',
+\]
 
 "Treat .sql files as PostgreSQL
 let g:sql_type_default = 'pgsql'
 
 "NERDTree
 map <C-n> :NERDTreeToggle<CR>
+
+"Vim Tmux Runner
+let g:VtrUseVtrMaps = 1
+
+"Airline
+let g:airline#extensions#csv#enabled = 1
+let g:airline#extensions#csv#column_display = 'Name'
+
+"Goyo
+let g:goyo_width = 120

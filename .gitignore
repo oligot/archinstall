@@ -1,8 +1,12 @@
-src/.vim/.netrwhist
 *.swp
+
 src/.zsh/cache/
-src/.vim/plugged
-src/.vim/undo
-src/.vim/swp
-src/.vim/backup
+
+src/.vim/.netrwhist
 src/.vim/autoload
+src/.vim/backup
+src/.vim/black
+src/.vim/plugged
+src/.vim/spell
+src/.vim/swp
+src/.vim/undo
