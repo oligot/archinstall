@@ -2,6 +2,7 @@
 
 pwd=`pwd`
 SESSION=`basename $pwd` 
+height=`xdpyinfo  | grep 'dimensions:' | awk '{ print $2 }' | cut -d 'x' -f 2`
 
 # create a new session if there isn't one already
 tmux list-sessions | grep "^$SESSION\:.*$" > /dev/null
@@ -10,6 +11,9 @@ if [ "$?" -ne 0 ]; then
   tmux send-keys "$EDITOR" C-m
   tmux split-window
   tmux split-window -h
+  if [ $height -gt 2000 ]; then
+    tmux resize-pane -D 50
+  fi
 fi
 
 # attach to session
