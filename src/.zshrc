@@ -16,6 +16,7 @@ zplug "plugins/extract", from:oh-my-zsh
 zplug "plugins/fasd", from:oh-my-zsh
 zplug "plugins/git", from:oh-my-zsh
 zplug "plugins/git-extras", from:oh-my-zsh
+zplug "plugins/git-flow-avh", from:oh-my-zsh
 zplug "plugins/go", from:oh-my-zsh
 zplug "plugins/npm", from:oh-my-zsh
 zplug "plugins/sudo", from:oh-my-zsh
@@ -25,6 +26,7 @@ zplug "plugins/tmux", from:oh-my-zsh
 # zplug "plugins/vi-mode", from:oh-my-zsh
 zplug "plugins/yarn", from:oh-my-zsh
 zplug "plugins/zsh_reload", from:oh-my-zsh
+zplug "plugins/command-not-found", from:oh-my-zsh
 
 # Install plugins if there are plugins that have not been installed
 if ! zplug check --verbose; then
@@ -85,11 +87,11 @@ export LESS_TERMCAP_ue=$'\E[0m'        # fin
 alias _='sudo'
 alias bh='bitbucket-home'
 alias cat='bat'
+alias d='git diff -w'
 alias df='df -h'
 alias dodo='sudo /sbin/shutdown -h now'
 alias du='du -h'
 alias gdcw='git diff --cached -w' # Overwrite oh-my-zsh git plugin
-alias gdw='git diff -w' # Overwrite oh-my-zsh git plugin
 alias gpa='git add . && git commit -v && git push'
 alias gstau='git stash push --include-untracked'
 alias gwl='git worktree list'
@@ -100,7 +102,7 @@ alias la='ls -a'
 alias ls='exa'
 alias preview="fzf --preview 'bat --color=always {}'"
 alias rm='rm -I'
-alias s='npm run serve'
+alias s='git status -s'
 alias sudo='sudo '
 alias v='vim'
 alias yupi='yarn upgrade-interactive --latest'
@@ -184,4 +186,4 @@ autoload -U zsh-mime-setup
 zsh-mime-setup
 
 eval "$(starship init zsh)"
-eval "$(pyenv virtualenv-init -)"
+# eval "$(pyenv virtualenv-init -)"
