@@ -266,13 +266,18 @@ Plug 'mbbill/undotree'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-dadbod'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-unimpaired'
+Plug 'kristijanhusak/vim-dadbod-ui'
+Plug 'vim-scripts/dbext.vim'
+Plug 'kristijanhusak/vim-dadbod-completion'
 Plug 'airblade/vim-gitgutter'
 Plug 'suan/vim-instant-markdown'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'isRuslan/vim-es6'
 Plug 'othree/javascript-libraries-syntax.vim'
-Plug 'tpope/vim-surround'
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-textobj-function'
@@ -306,6 +311,12 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'mechatroner/rainbow_csv'
 Plug 'psf/black', { 'branch': 'stable', 'for': 'python' }
 Plug 'junegunn/goyo.vim'
+Plug 'pbrisbin/vim-mkdir'
+Plug 'davidhalter/jedi-vim'
+Plug 'raimon49/requirements.txt.vim'
+Plug 'rhysd/vim-clang-format'
+Plug 'unblevable/quick-scope'
+" Plug 'AlphaMycelium/pathfinder.vim'
 call plug#end()
 
 colorscheme nord
@@ -322,7 +333,6 @@ cabbrev lvim
 
 "Ranger
 let g:ranger_map_keys = 0
-map <leader>r :Ranger<CR>
 
 "toggle gundo
 nnoremap <leader>u :UndotreeToggle<CR>
@@ -379,6 +389,7 @@ let g:vue_pre_processors = ['scss', 'typescript']
 autocmd FileType javascript,typescript,vue map <buffer> <leader>f :PrettierAsync<cr>
 autocmd FileType python map <buffer> <leader>f :Black<cr>
 autocmd FileType go map <buffer> <leader>f :GoImports<cr>
+autocmd FileType proto map <buffer> <leader>f :ClangFormat<cr>
 
 "Markdown
 let g:vim_markdown_conceal = 0
@@ -410,6 +421,7 @@ set completeopt=menu,menuone,noinsert,noselect
 set complete+=kspell
 autocmd FileType context setlocal spell spelllang=en,fr
 autocmd FileType gitcommit setlocal spell
+autocmd BufRead,BufNewFile *.md setlocal spell spelllang=en,fr
 
 "vim-go
 " let g:go_fmt_command = "goimports"
@@ -435,11 +447,18 @@ let g:go_metalinter_enabled = [
     \'varcheck',
 \]
 
+"black
+let g:black_linelength=79
+
 "Treat .sql files as PostgreSQL
 let g:sql_type_default = 'pgsql'
 
 "NERDTree
 map <C-n> :NERDTreeToggle<CR>
+map <leader>r :NERDTreeFind<CR>
+let g:NERDTreeWinPos = "right"
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
 "Vim Tmux Runner
 let g:VtrUseVtrMaps = 1
@@ -450,3 +469,6 @@ let g:airline#extensions#csv#column_display = 'Name'
 
 "Goyo
 let g:goyo_width = 120
+
+"SQL autocompletion
+autocmd FileType sql setlocal omnifunc=vim_dadbod_completion#omni
