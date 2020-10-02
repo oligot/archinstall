@@ -17,7 +17,7 @@ zplug "plugins/fasd", from:oh-my-zsh
 zplug "plugins/git", from:oh-my-zsh
 zplug "plugins/git-extras", from:oh-my-zsh
 zplug "plugins/git-flow-avh", from:oh-my-zsh
-zplug "plugins/go", from:oh-my-zsh
+zplug "plugins/golang", from:oh-my-zsh
 zplug "plugins/npm", from:oh-my-zsh
 zplug "plugins/sudo", from:oh-my-zsh
 zplug "plugins/systemd", from:oh-my-zsh
