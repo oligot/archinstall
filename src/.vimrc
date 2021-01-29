@@ -13,10 +13,10 @@ set nocompatible
 set viminfo='1000,f1,<500  
 
 "Set mapleader
-let mapleader = ","
-let g:mapleader = ","
-let maplocalleader = ","
-let g:maplocalleader = ","
+let mapleader = " "
+let g:mapleader = " "
+let maplocalleader = " "
+let g:maplocalleader = " "
 
 "Fast saving
 nmap <leader>w :w!<cr>
@@ -233,14 +233,14 @@ let g:miniBufExplMapWindowNavArrows = 1
 let g:miniBufExplMapCTabSwitchBufs = 1
 let g:miniBufExplModSelTarget = 1 
 
-nnoremap <C-p> :Files<CR>
+nnoremap <C-p> :GFiles<CR>
 "Buffers
 nnoremap <silent> <leader>d :bdelete<CR>
-nnoremap <Leader>, :Buffers<CR>
+nnoremap <Leader><space> :Buffers<CR>
 nnoremap <Leader>v :History<CR>
 " nnoremap <silent> <leader>, :CtrlPBuffer<CR>
 " nnoremap <silent> <leader>v :CtrlPMRUFiles<CR>
-nnoremap <leader><space> <C-^>
+nnoremap <leader>, <C-^>
 
 "Move selected block up/down in Visual block mode
 vnoremap J :m '>+1<CR>gv=gv
@@ -248,6 +248,9 @@ vnoremap K :m '<-2<CR>gv=gv
 
 "vv to generate new vertical split
 nnoremap <silent> <leader>q <C-w>v
+
+"Disable LaTeX-Box (comes with polyglot)
+let g:polyglot_disabled = ['latex']
 
 "Plug
 if empty(glob('~/.vim/autoload/plug.vim'))
@@ -269,9 +272,10 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-dadbod'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-dispatch'
 Plug 'kristijanhusak/vim-dadbod-ui'
 Plug 'vim-scripts/dbext.vim'
-Plug 'kristijanhusak/vim-dadbod-completion'
+" Plug 'kristijanhusak/vim-dadbod-completion'
 Plug 'airblade/vim-gitgutter'
 Plug 'suan/vim-instant-markdown'
 Plug 'SirVer/ultisnips'
@@ -317,6 +321,9 @@ Plug 'raimon49/requirements.txt.vim'
 Plug 'rhysd/vim-clang-format'
 Plug 'unblevable/quick-scope'
 " Plug 'AlphaMycelium/pathfinder.vim'
+Plug 't9md/vim-choosewin'
+Plug 'weilbith/nerdtree_choosewin-plugin'
+Plug 'diepm/vim-rest-console'
 call plug#end()
 
 colorscheme nord
@@ -394,9 +401,6 @@ autocmd FileType proto map <buffer> <leader>f :ClangFormat<cr>
 "Markdown
 let g:vim_markdown_conceal = 0
 
-"Disable LaTeX-Box (comes with polyglot)
-let g:polyglot_disabled = ['latex']
-
 "LSC
 let g:lsc_server_commands = {
  \  'javascript': {
@@ -472,3 +476,13 @@ let g:goyo_width = 120
 
 "SQL autocompletion
 autocmd FileType sql setlocal omnifunc=vim_dadbod_completion#omni
+
+"Dispatch
+autocmd FileType go let b:dispatch = 'go test'
+nnoremap <Leader><CR> :Dispatch<CR>
+
+"Fern
+let g:fern#renderer = "nerdfont"
+
+"Choose Window
+nmap  -  <Plug>(choosewin)
