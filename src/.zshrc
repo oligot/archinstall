@@ -87,6 +87,7 @@ export LESS_TERMCAP_ue=$'\E[0m'        # fin
 alias _='sudo'
 alias bh='bitbucket-home'
 alias cat='bat'
+alias certpp='openssl x509 -text -in'
 alias d='git diff -w'
 alias df='df -h'
 alias dodo='sudo /sbin/shutdown -h now'
