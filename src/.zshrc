@@ -40,7 +40,7 @@ zplug load
 
 # Environment variables
 #
-export PATH="$PATH:$HOME/bin:/usr/local/bin:$GOPATH/bin:$HOME/.local/bin:$HOME/.cargo/bin"
+export PATH="$PATH:$HOME/bin:/usr/local/bin:$GOPATH/bin:$HOME/.local/bin:$HOME/.cargo/bin:$HOME/.fzf/bin"
 export GOPATH=$HOME/go
 export MANPATH=$MANPATH:/usr/local/share/man
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -176,7 +176,7 @@ zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 
 
 export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"  # Added by n-install (see http://git.io/n-install-repo).
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[ -f ~/.fzf/shell/key-bindings.zsh ] && source ~/.fzf/shell/key-bindings.zsh
 
 autoload -Uz compinit && compinit
 autoload -U +X bashcompinit && bashcompinit
