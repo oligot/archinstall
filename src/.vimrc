@@ -277,7 +277,7 @@ Plug 'kristijanhusak/vim-dadbod-ui'
 Plug 'vim-scripts/dbext.vim'
 " Plug 'kristijanhusak/vim-dadbod-completion'
 Plug 'airblade/vim-gitgutter'
-Plug 'suan/vim-instant-markdown'
+Plug 'shime/vim-livedown'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'isRuslan/vim-es6'
@@ -324,6 +324,9 @@ Plug 'unblevable/quick-scope'
 Plug 't9md/vim-choosewin'
 Plug 'weilbith/nerdtree_choosewin-plugin'
 Plug 'diepm/vim-rest-console'
+Plug 'junegunn/vim-peekaboo'
+Plug 'szw/vim-maximizer'
+Plug 'rhysd/git-messenger.vim'
 call plug#end()
 
 colorscheme nord
@@ -375,8 +378,8 @@ nmap <leader>jf <Plug>(ale_fix)
 "Tern
 nmap <leader>t :TernDef<cr>
 
-"Instant Markdown
-let g:instant_markdown_autostart = 0
+"Livedown
+nmap gm :LivedownToggle<CR>
 
 "javascript-libraries-syntax
 let g:used_javascript_libs = 'underscore,vue'
@@ -400,6 +403,7 @@ autocmd FileType proto map <buffer> <leader>f :ClangFormat<cr>
 
 "Markdown
 let g:vim_markdown_conceal = 0
+let g:markdown_fenced_languages = ['html', 'python', 'go', 'vim', 'bash', 'yaml']
 
 "LSC
 let g:lsc_server_commands = {
@@ -450,6 +454,7 @@ let g:go_metalinter_enabled = [
     \'unused', 
     \'varcheck',
 \]
+autocmd BufEnter *.go nmap <leader>cc  <Plug>(go-callers)
 
 "black
 let g:black_linelength=79
@@ -486,3 +491,6 @@ let g:fern#renderer = "nerdfont"
 
 "Choose Window
 nmap  -  <Plug>(choosewin)
+
+"Access man pages
+runtime ftplugin/man.vim
