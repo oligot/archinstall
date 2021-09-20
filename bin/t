@@ -12,7 +12,7 @@ if [ "$?" -ne 0 ]; then
   tmux split-window
   tmux split-window -h
   if [ $height -gt 2000 ]; then
-    tmux resize-pane -D 50
+    tmux resize-pane -D 10
   fi
 fi
 
