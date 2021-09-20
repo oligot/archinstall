@@ -27,6 +27,7 @@ zplug "plugins/tmux", from:oh-my-zsh
 zplug "plugins/yarn", from:oh-my-zsh
 zplug "plugins/zsh_reload", from:oh-my-zsh
 zplug "plugins/command-not-found", from:oh-my-zsh
+zplug "romkatv/powerlevel10k", as:theme, depth:1
 
 # Install plugins if there are plugins that have not been installed
 if ! zplug check --verbose; then
@@ -37,6 +38,13 @@ if ! zplug check --verbose; then
 fi
 
 zplug load
+
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
 
 # Environment variables
 #
@@ -87,6 +95,7 @@ export LESS_TERMCAP_ue=$'\E[0m'        # fin
 alias _='sudo'
 alias bh='bitbucket-home'
 alias cat='bat'
+alias cdr="cd $(git rev-parse --show-toplevel)"
 alias certpp='openssl x509 -text -in'
 alias d='git diff -w'
 alias df='df -h'
@@ -95,6 +104,7 @@ alias du='du -h'
 alias gdcw='git diff --cached -w' # Overwrite oh-my-zsh git plugin
 alias gpa='git add . && git commit -v && git push'
 alias gstau='git stash push --include-untracked'
+alias gt='git tag'
 alias gwl='git worktree list'
 alias jc='sudo journalctl -u'
 alias jcf='sudo journalctl -f -u'
@@ -102,6 +112,7 @@ alias l='ls -l'
 alias la='ls -a'
 alias ls='exa'
 alias preview="fzf --preview 'bat --color=always {}'"
+alias printcert="openssl x509 -noout -text -in "
 alias rm='rm -I'
 alias s='git status -s'
 alias sudo='sudo '
@@ -186,5 +197,20 @@ complete -o nospace -C /usr/bin/vault vault
 autoload -U zsh-mime-setup
 zsh-mime-setup
 
-eval "$(starship init zsh)"
+# Mass rename files
+autoload -U zmv
+
+# eval "$(starship init zsh)"
 # eval "$(pyenv virtualenv-init -)"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+source /home/oli/.config/broot/launcher/bash/br
+
+export GPG_TTY=$(tty)
+gpgconf --launch gpg-agent
+
+# eval "$(mcfly init zsh)"
