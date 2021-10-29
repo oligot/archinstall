@@ -327,6 +327,7 @@ Plug 'diepm/vim-rest-console'
 Plug 'junegunn/vim-peekaboo'
 Plug 'szw/vim-maximizer'
 Plug 'rhysd/git-messenger.vim'
+Plug 'z0mbix/vim-shfmt', { 'for': 'sh' }
 call plug#end()
 
 colorscheme nord
@@ -494,3 +495,6 @@ nmap  -  <Plug>(choosewin)
 
 "Access man pages
 runtime ftplugin/man.vim
+
+"Format shell scripts on save
+" let g:shfmt_fmt_on_save = 1
