@@ -22,4 +22,4 @@ cd dotfiles/
 ./bootstrap.sh 
 
 echo "Installing additional softwares..."
-yay -S --noconfirm firefox evolution i3-wm gvim zsh tmux tig thefuck exa bat xorg-xrandr jq ripgrep dunst polybar redshift rofi git-delta-bin git-extras
+yay -S --noconfirm firefox evolution i3-wm gvim neovim python-pynvim zsh tmux tig thefuck exa bat xorg-xrandr jq ripgrep dunst polybar redshift rofi git-delta-bin git-extras

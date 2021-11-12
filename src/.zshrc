@@ -68,7 +68,7 @@ export MANPATH=$MANPATH:/usr/local/share/man
 
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
-export EDITOR="vim"
+export EDITOR="nvim"
 export BROWSER="firefox"
 export FZF_DEFAULT_COMMAND='rg --files --follow --hidden'
 # add support for ctrl+o to open selected file in VS Code
@@ -116,7 +116,7 @@ alias printcert="openssl x509 -noout -text -in "
 alias rm='rm -I'
 alias s='git status -s'
 alias sudo='sudo '
-alias v='vim'
+alias v='nvim'
 alias yupi='yarn upgrade-interactive --latest'
 
 # Global aliases -- These do not have to be

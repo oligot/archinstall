@@ -35,6 +35,10 @@ mkdir -p $HOME/.vim/undo
 mkdir -p $HOME/.vim/swp
 mkdir -p $HOME/.vim/backup
 
+# Neovim
+mkdir -p ~/.config/nvim
+ln -sf $pwd/nvim/init.vim ~/.config/nvim/init.vim
+
 # Tmux
 if [ ! -d "$HOME/.tmux/plugins/tpm" ]; then
     git clone https://github.com/tmux-plugins/tpm $HOME/.tmux/plugins/tpm
