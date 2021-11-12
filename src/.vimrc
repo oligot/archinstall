@@ -288,7 +288,7 @@ Plug 'kana/vim-textobj-function'
 Plug 'thinca/vim-textobj-function-javascript'
 Plug 'jceb/vim-textobj-uri'
 Plug 'mhinz/vim-grepper'
-Plug 'dense-analysis/ale'
+" Plug 'dense-analysis/ale'
 Plug 'rhysd/committia.vim'
 Plug 'terryma/vim-expand-region'
 Plug 'christoomey/vim-tmux-navigator'
@@ -306,7 +306,7 @@ Plug 'rhysd/git-messenger.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'lervag/vimtex'
-Plug 'natebosch/vim-lsc'
+" Plug 'natebosch/vim-lsc'
 Plug 'francoiscabrol/ranger.vim'
 " Plug 'mcchrish/nnn.vim'
 Plug 'arcticicestudio/nord-vim'
@@ -328,6 +328,7 @@ Plug 'junegunn/vim-peekaboo'
 Plug 'szw/vim-maximizer'
 Plug 'rhysd/git-messenger.vim'
 Plug 'z0mbix/vim-shfmt', { 'for': 'sh' }
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
 
 colorscheme nord
@@ -386,7 +387,8 @@ nmap gm :LivedownToggle<CR>
 let g:used_javascript_libs = 'underscore,vue'
 
 "Grepper
-nnoremap <leader>g :Grepper -tool rg -grepprg rg --no-heading --vimgrep -i `git rev-parse --show-toplevel` -e<cr>
+" nnoremap <leader>g :Grepper -tool rg -grepprg rg --no-heading --vimgrep -i `git rev-parse --show-toplevel` -e<cr>
+nnoremap <leader>g :Rg 
 nnoremap <leader>* :Grepper -tool rg -cword -noprompt<cr>
 nmap gs  <plug>(GrepperOperator)
 xmap gs  <plug>(GrepperOperator)
@@ -406,26 +408,6 @@ autocmd FileType proto map <buffer> <leader>f :ClangFormat<cr>
 let g:vim_markdown_conceal = 0
 let g:markdown_fenced_languages = ['html', 'python', 'go', 'vim', 'bash', 'yaml']
 
-"LSC
-let g:lsc_server_commands = {
- \  'javascript': {
- \    'command': 'typescript-language-server --stdio',
- \    'log_level': -1,
- \    'suppress_stderr': v:true,
- \  }
- \}
-let g:lsc_auto_map = {
- \  'GoToDefinition': 'gd',
- \  'FindReferences': 'gr',
- \  'Rename': 'gR',
- \  'ShowHover': 'K',
- \  'Completion': 'omnifunc',
- \}
-let g:lsc_enable_autocomplete  = v:true
-let g:lsc_enable_diagnostics   = v:false
-let g:lsc_reference_highlights = v:false
-let g:lsc_trace_level          = 'off'
-
 set completeopt=menu,menuone,noinsert,noselect
 set complete+=kspell
 autocmd FileType context setlocal spell spelllang=en,fr
@@ -433,7 +415,21 @@ autocmd FileType gitcommit setlocal spell
 autocmd BufRead,BufNewFile *.md setlocal spell spelllang=en,fr
 
 "vim-go
-" let g:go_fmt_command = "goimports"
+
+" disable all linters as that is taken care of by coc.nvim
+let g:go_diagnostics_enabled = 0
+let g:go_metalinter_enabled = []
+
+" don't jump to errors after metalinter is invoked
+let g:go_jump_to_error = 0
+
+" run go imports on file save
+let g:go_fmt_command = "goimports"
+
+" automatically highlight variable your cursor is on
+let g:go_auto_sameids = 0
+
+" syntax highlighting
 let g:go_highlight_types = 1
 let g:go_highlight_fields = 1
 let g:go_highlight_functions = 1
@@ -443,19 +439,23 @@ let g:go_highlight_extra_types = 1
 let g:go_highlight_build_constraints = 1
 let g:go_highlight_generate_tags = 1
 let g:go_auto_type_info = 1
-let g:go_metalinter_enabled = [
-    \ 'deadcode', 
-    \ 'errcheck', 
-    \ 'gosimple', 
-    \ 'govet', 
-    \ 'ineffassign', 
-    \ 'staticcheck', 
-    \'structcheck', 
-    \'typecheck', 
-    \'unused', 
-    \'varcheck',
-\]
+
+" Run all the tests in the current file
+autocmd BufEnter *.go nmap <leader>t  <Plug>(go-test)
+" Run the current test function only
+autocmd BufEnter *.go nmap <leader>tt <Plug>(go-test-func)
+" Toggle the coverage profile for the current file
+autocmd BufEnter *.go nmap <leader>c  <Plug>(go-coverage-toggle)
+" Show the interfaces a type implements 
+autocmd BufEnter *.go nmap <leader>ii  <Plug>(go-implements)
+" Describe the definition of a given type
+autocmd BufEnter *.go nmap <leader>ci  <Plug>(go-describe)
+" See the callers of a given function
 autocmd BufEnter *.go nmap <leader>cc  <Plug>(go-callers)
+" Find all references of a given type/function in the codebase
+nmap <leader>cr <Plug>(coc-references)
+" Rename the symbol your cursor is on
+nmap <leader>r <Plug>(coc-rename)
 
 "black
 let g:black_linelength=79
@@ -498,3 +498,10 @@ runtime ftplugin/man.vim
 
 "Format shell scripts on save
 " let g:shfmt_fmt_on_save = 1
+
+" reselect pasted text
+nnoremap gp `[v`]
+
+" change the direction of new splits
+set splitbelow
+set splitright
