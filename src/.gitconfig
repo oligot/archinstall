@@ -9,6 +9,7 @@
     pager = delta --dark
 [push]
     default = simple
+    followTags = true
 [merge]
     tool = vimdiff
 
