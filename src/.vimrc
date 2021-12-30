@@ -116,11 +116,6 @@ set noshowmode
 set conceallevel=1
 set concealcursor=nc
 
-" vim-javascript conceal settings.
-let g:javascript_conceal_function = "λ"
-let g:javascript_conceal_this = "@"
-let g:javascript_conceal_return = "<"
-let g:javascript_conceal_prototype = "#"
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Text options
@@ -216,38 +211,14 @@ map <silent> <C-l> :call WinMove('l')<cr>
 inoremap jj <esc>
 inoremap jk <esc>
 
-"Tlist
-let Tlist_Show_One_File=1
-let Tlist_Use_Right_Window=1
-let Tlist_Exit_OnlyWindow = 1
-let Tlist_GainFocus_On_ToggleOpen = 1
-let Tlist_Sort_Type="name"
-"Toggle the taglist window 
-nnoremap <silent> <F9> :TlistToggle<CR>
 "Update time
 set updatetime=1000
-
-"Ctags
-nnoremap <silent> <F3> :bd<CR>
-nnoremap <silent> <F11> :!ctags -R --languages=c++ --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
-
 
 "comments
 set comments=sl:/*,mb:*,elx:*/
 
-"Minibufexpl
-let g:miniBufExplMapWindowNavVim = 1
-let g:miniBufExplMapWindowNavArrows = 1
-let g:miniBufExplMapCTabSwitchBufs = 1
-let g:miniBufExplModSelTarget = 1 
-
-nnoremap <C-p> :GFiles<CR>
 "Buffers
 nnoremap <silent> <leader>d :bdelete<CR>
-nnoremap <Leader><space> :Buffers<CR>
-nnoremap <Leader>v :History<CR>
-" nnoremap <silent> <leader>, :CtrlPBuffer<CR>
-" nnoremap <silent> <leader>v :CtrlPMRUFiles<CR>
 nnoremap <leader>, <C-^>
 
 "Move selected block up/down in Visual block mode
@@ -257,94 +228,59 @@ vnoremap K :m '<-2<CR>gv=gv
 "vv to generate new vertical split
 nnoremap <silent> <leader>q <C-w>v
 
-"Disable LaTeX-Box (comes with polyglot)
-let g:polyglot_disabled = ['latex']
-
-"Plug
+" Automatically install vim-plug
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   autocmd VimEnter * PlugInstall --sync | source ~/.vimrc
 endif
+
 call plug#begin('~/.vim/plugged')
-Plug 'vim-airline/vim-airline'
-Plug 'editorconfig/editorconfig-vim'
-Plug 'mattn/emmet-vim'
-Plug 'haya14busa/incsearch.vim'
-Plug 'wincent/terminus'
-Plug 'edkolev/tmuxline.vim'
-Plug 'mbbill/undotree'
-Plug 'tpope/vim-sensible'
-Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-dadbod'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-unimpaired'
-Plug 'tpope/vim-dispatch'
-Plug 'kristijanhusak/vim-dadbod-ui'
-Plug 'vim-scripts/dbext.vim'
-" Plug 'kristijanhusak/vim-dadbod-completion'
-Plug 'airblade/vim-gitgutter'
-Plug 'shime/vim-livedown'
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
-Plug 'isRuslan/vim-es6'
-Plug 'othree/javascript-libraries-syntax.vim'
-Plug 'AndrewRadev/splitjoin.vim'
-Plug 'kana/vim-textobj-user'
-Plug 'kana/vim-textobj-function'
-Plug 'thinca/vim-textobj-function-javascript'
-Plug 'jceb/vim-textobj-uri'
-Plug 'mhinz/vim-grepper'
-" Plug 'dense-analysis/ale'
-Plug 'rhysd/committia.vim'
-Plug 'terryma/vim-expand-region'
-Plug 'christoomey/vim-tmux-navigator'
-Plug 'christoomey/vim-tmux-runner'
-" Plug 'gorkunov/smartpairs.vim'
-Plug 'jiangmiao/auto-pairs'
-Plug 'prettier/vim-prettier', { 'do': 'npm install' }
-Plug 'sheerun/vim-polyglot'
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-Plug 'Raimondi/delimitMate'
-Plug 'ryanoasis/vim-devicons'
-Plug 'andymass/vim-matchup'
-Plug 'rbong/vim-flog'
-Plug 'xojs/vim-xo'
-Plug 'rhysd/git-messenger.vim'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
-Plug 'lervag/vimtex'
-" Plug 'natebosch/vim-lsc'
-Plug 'francoiscabrol/ranger.vim'
-" Plug 'mcchrish/nnn.vim'
-Plug 'arcticicestudio/nord-vim'
-Plug 'preservim/nerdtree'
-Plug 'Xuyuanp/nerdtree-git-plugin'
-" Plug 'mechatroner/rainbow_csv'
-Plug 'psf/black', { 'branch': 'stable', 'for': 'python' }
-Plug 'junegunn/goyo.vim'
-Plug 'pbrisbin/vim-mkdir'
-Plug 'davidhalter/jedi-vim'
-Plug 'raimon49/requirements.txt.vim'
-Plug 'rhysd/vim-clang-format'
-Plug 'unblevable/quick-scope'
-" Plug 'AlphaMycelium/pathfinder.vim'
-Plug 't9md/vim-choosewin'
-Plug 'weilbith/nerdtree_choosewin-plugin'
-Plug 'diepm/vim-rest-console'
-Plug 'junegunn/vim-peekaboo'
-Plug 'szw/vim-maximizer'
-Plug 'rhysd/git-messenger.vim'
-Plug 'z0mbix/vim-shfmt', { 'for': 'sh' }
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+source ~/.vim/plugins/airline.vim
+source ~/.vim/plugins/auto-pairs.vim
+source ~/.vim/plugins/black.vim
+source ~/.vim/plugins/choosewin.vim
+source ~/.vim/plugins/clang-format.vim
+source ~/.vim/plugins/coc.vim
+source ~/.vim/plugins/commentary.vim
+source ~/.vim/plugins/dadbod.vim
+source ~/.vim/plugins/dispatch.vim
+source ~/.vim/plugins/editorconfig.vim
+source ~/.vim/plugins/emmet.vim
+source ~/.vim/plugins/expand-region.vim
+source ~/.vim/plugins/fugitive.vim
+source ~/.vim/plugins/fzf.vim
+source ~/.vim/plugins/git.vim
+source ~/.vim/plugins/go.vim
+source ~/.vim/plugins/grepper.vim
+source ~/.vim/plugins/incsearch.vim
+source ~/.vim/plugins/javascript.vim
+source ~/.vim/plugins/jedi.vim
+source ~/.vim/plugins/markdown-preview.vim
+source ~/.vim/plugins/matchup.vim
+source ~/.vim/plugins/maximizer.vim
+source ~/.vim/plugins/mkdir.vim
+source ~/.vim/plugins/nerdtree.vim
+source ~/.vim/plugins/nord.vim
+source ~/.vim/plugins/peekaboo.vim
+source ~/.vim/plugins/polyglot.vim
+source ~/.vim/plugins/prettier.vim
+source ~/.vim/plugins/quick-scope.vim
+source ~/.vim/plugins/ranger.vim
+source ~/.vim/plugins/sensible.vim
+source ~/.vim/plugins/shfmt.vim
+source ~/.vim/plugins/snippets.vim
+source ~/.vim/plugins/splitjoin.vim
+source ~/.vim/plugins/surround.vim
+source ~/.vim/plugins/terminal.vim
+source ~/.vim/plugins/textobj.vim
+source ~/.vim/plugins/tmux.vim
+source ~/.vim/plugins/undotree.vim
+source ~/.vim/plugins/unimpaired.vim
+source ~/.vim/plugins/vimtex.vim
 call plug#end()
 
 colorscheme nord
-
-" Italic comments
-" https://rsapkf.netlify.com/blog/enabling-italics-vim-tmux
-highlight Comment cterm=italic
 
 cabbrev lvim
       \ lvim /\<lt><C-R><C-W>\>/gj
@@ -352,70 +288,9 @@ cabbrev lvim
       \ <Bar> lw
       \ <C-Left><C-Left><C-Left>
 
-"Ranger
-let g:ranger_map_keys = 0
-
-"toggle gundo
-nnoremap <leader>u :UndotreeToggle<CR>
-
 "Consistent downwards/upwards
 nnoremap <expr> n 'Nn'[v:searchforward]
 nnoremap <expr> N 'nN'[v:searchforward]
-
-"Airline
-let g:airline_powerline_fonts = 1
-
-"Incsearch
-let g:incsearch#auto_nohlsearch = 1
-map /  <Plug>(incsearch-forward)
-map ?  <Plug>(incsearch-backward)
-map g/ <Plug>(incsearch-stay)
-map n  <Plug>(incsearch-nohl-n)
-map N  <Plug>(incsearch-nohl-N)
-map *  <Plug>(incsearch-nohl-*)
-map #  <Plug>(incsearch-nohl-#)
-map g* <Plug>(incsearch-nohl-g*)
-map g# <Plug>(incsearch-nohl-g#)
-
-"Asynchronous Lint Engine
-let g:ale_linters = {'javascript': ['eslint'], 'typescript': ['eslint']}
-let g:ale_fixers = {'javascript': ['eslint'], 'typescript': ['eslint']}
-let g:ale_sign_column_always = 1
-nmap <silent> <leader>l <Plug>(ale_previous_wrap)
-nmap <silent> <leader>k <Plug>(ale_next_wrap)
-
-nmap <leader>jf <Plug>(ale_fix)
-
-"Tern
-nmap <leader>t :TernDef<cr>
-
-"Livedown
-nmap gm :LivedownToggle<CR>
-
-"javascript-libraries-syntax
-let g:used_javascript_libs = 'underscore,vue'
-
-"Grepper
-" nnoremap <leader>g :Grepper -tool rg -grepprg rg --no-heading --vimgrep -i `git rev-parse --show-toplevel` -e<cr>
-nnoremap <leader>g :Rg 
-nnoremap <leader>* :Grepper -tool rg -cword -noprompt<cr>
-nmap gs  <plug>(GrepperOperator)
-xmap gs  <plug>(GrepperOperator)
-
-"Vue
-autocmd BufRead,BufNewFile *.vue setlocal filetype=vue.html.javascript
-autocmd BufRead,BufNewFile *.vue syntax sync fromstart
-let g:vue_pre_processors = ['scss', 'typescript']
-
-"Format
-autocmd FileType javascript,typescript,vue map <buffer> <leader>f :PrettierAsync<cr>
-autocmd FileType python map <buffer> <leader>f :Black<cr>
-autocmd FileType go map <buffer> <leader>f :GoImports<cr>
-autocmd FileType proto map <buffer> <leader>f :ClangFormat<cr>
-
-"Markdown
-let g:vim_markdown_conceal = 0
-let g:markdown_fenced_languages = ['html', 'python', 'go', 'vim', 'bash', 'yaml']
 
 set completeopt=menu,menuone,noinsert,noselect
 set complete+=kspell
@@ -423,86 +298,6 @@ autocmd FileType context setlocal spell spelllang=en,fr
 autocmd FileType gitcommit setlocal spell
 autocmd BufRead,BufNewFile *.md setlocal spell spelllang=en,fr
 
-"vim-go
-
-" disable all linters as that is taken care of by coc.nvim
-let g:go_diagnostics_enabled = 0
-let g:go_metalinter_enabled = []
-
-" don't jump to errors after metalinter is invoked
-let g:go_jump_to_error = 0
-
-" run go imports on file save
-let g:go_fmt_command = "goimports"
-
-" automatically highlight variable your cursor is on
-let g:go_auto_sameids = 0
-
-" syntax highlighting
-let g:go_highlight_types = 1
-let g:go_highlight_fields = 1
-let g:go_highlight_functions = 1
-let g:go_highlight_function_calls = 1
-let g:go_highlight_operators = 1
-let g:go_highlight_extra_types = 1
-let g:go_highlight_build_constraints = 1
-let g:go_highlight_generate_tags = 1
-let g:go_auto_type_info = 1
-
-" Run all the tests in the current file
-autocmd BufEnter *.go nmap <leader>t  <Plug>(go-test)
-" Run the current test function only
-autocmd BufEnter *.go nmap <leader>tt <Plug>(go-test-func)
-" Toggle the coverage profile for the current file
-autocmd BufEnter *.go nmap <leader>c  <Plug>(go-coverage-toggle)
-" Show the interfaces a type implements 
-autocmd BufEnter *.go nmap <leader>ii  <Plug>(go-implements)
-" Describe the definition of a given type
-autocmd BufEnter *.go nmap <leader>ci  <Plug>(go-describe)
-" See the callers of a given function
-autocmd BufEnter *.go nmap <leader>cc  <Plug>(go-callers)
-" Find all references of a given type/function in the codebase
-nmap <leader>cr <Plug>(coc-references)
-" Rename the symbol your cursor is on
-nmap <leader>r <Plug>(coc-rename)
-" Show all diagnostics.
-nnoremap <silent><nowait> <space>a  :<C-u>CocList diagnostics<cr>
-
-"black
-let g:black_linelength=79
-
-"Treat .sql files as PostgreSQL
-let g:sql_type_default = 'pgsql'
-
-"NERDTree
-map <C-n> :NERDTreeToggle<CR>
-map <leader>r :NERDTreeFind<CR>
-let g:NERDTreeWinPos = "right"
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-
-"Vim Tmux Runner
-let g:VtrUseVtrMaps = 1
-
-"Airline
-let g:airline#extensions#csv#enabled = 1
-let g:airline#extensions#csv#column_display = 'Name'
-
-"Goyo
-let g:goyo_width = 120
-
-"SQL autocompletion
-autocmd FileType sql setlocal omnifunc=vim_dadbod_completion#omni
-
-"Dispatch
-autocmd FileType go let b:dispatch = 'go test'
-nnoremap <Leader><CR> :Dispatch<CR>
-
-"Fern
-let g:fern#renderer = "nerdfont"
-
-"Choose Window
-nmap  -  <Plug>(choosewin)
 
 "Access man pages
 runtime ftplugin/man.vim
