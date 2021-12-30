@@ -214,3 +214,9 @@ export GPG_TTY=$(tty)
 gpgconf --launch gpg-agent
 
 # eval "$(mcfly init zsh)"
+
+function zshaddhistory() {
+	echo "${1%%$'\n'}⋮${PWD}   " >> ~/.zsh_history_ext
+}
+
+test -r "~/.dir_colors" && eval $(dircolors ~/.dir_colors)
