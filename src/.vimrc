@@ -31,6 +31,14 @@ map <leader>e :e! ~/.vimrc<cr>
 "When .vimrc is edited, reload it
 autocmd! bufwritepost vimrc source ~/.vimrc
 
+map <leader>Q :bufdo bdelete<cr>
+
+" Allow gf to open non-existent files
+map gf :edit <cfile><cr>
+
+" Open the current file in the default program
+nmap <leader>x :!xdg-open %<cr><cr>
+
 "When editing a file, always jump to the last known cursor position.
 "Don't do it when the position is invalid or when inside an event handler
 "(happens when dropping a file on gvim).
@@ -293,7 +301,8 @@ Plug 'rhysd/committia.vim'
 Plug 'terryma/vim-expand-region'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'christoomey/vim-tmux-runner'
-Plug 'gorkunov/smartpairs.vim'
+" Plug 'gorkunov/smartpairs.vim'
+Plug 'jiangmiao/auto-pairs'
 Plug 'prettier/vim-prettier', { 'do': 'npm install' }
 Plug 'sheerun/vim-polyglot'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
@@ -312,7 +321,7 @@ Plug 'francoiscabrol/ranger.vim'
 Plug 'arcticicestudio/nord-vim'
 Plug 'preservim/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'mechatroner/rainbow_csv'
+" Plug 'mechatroner/rainbow_csv'
 Plug 'psf/black', { 'branch': 'stable', 'for': 'python' }
 Plug 'junegunn/goyo.vim'
 Plug 'pbrisbin/vim-mkdir'
@@ -456,6 +465,8 @@ autocmd BufEnter *.go nmap <leader>cc  <Plug>(go-callers)
 nmap <leader>cr <Plug>(coc-references)
 " Rename the symbol your cursor is on
 nmap <leader>r <Plug>(coc-rename)
+" Show all diagnostics.
+nnoremap <silent><nowait> <space>a  :<C-u>CocList diagnostics<cr>
 
 "black
 let g:black_linelength=79
