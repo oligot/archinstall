@@ -1,11 +1,11 @@
 # archinstall
 
->  Personnal install scripts for my development environment 
+>  Personal install scripts for my development environment 
 
 On Arch Linux, you can install this with:
 
 ```bash
-> curl -fsSL https://github.com/oligot/dotfiles/raw/master/arch.sh | bash
+> curl -fsSL https://github.com/oligot/archinstall/raw/main/arch.sh | bash
 ```
 
 This will
