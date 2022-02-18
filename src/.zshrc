@@ -25,7 +25,6 @@ zplug "plugins/thefuck", from:oh-my-zsh
 zplug "plugins/tmux", from:oh-my-zsh
 # zplug "plugins/vi-mode", from:oh-my-zsh
 zplug "plugins/yarn", from:oh-my-zsh
-zplug "plugins/zsh_reload", from:oh-my-zsh
 zplug "plugins/command-not-found", from:oh-my-zsh
 zplug "romkatv/powerlevel10k", as:theme, depth:1
 
@@ -220,3 +219,5 @@ function zshaddhistory() {
 }
 
 test -r "~/.dir_colors" && eval $(dircolors ~/.dir_colors)
+
+eval "$(direnv hook zsh)"
