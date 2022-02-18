@@ -1,6 +1,6 @@
-# dotfiles
+# archinstall
 
-> Personal configuration/dot files
+>  Personnal install scripts for my development environment 
 
 On Arch Linux, you can install this with:
 
