@@ -1,42 +1,77 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
-pwd=`pwd`
+# https://sharats.me/posts/shell-script-best-practices/
+set -o errexit
+set -o nounset
+set -o pipefail
+if [[ "${TRACE-0}" == "1" ]]; then set -o xtrace; fi
 
-echo "Updating system..."
-sudo pacman -Syu --noconfirm
+pwd=$(pwd)
 
-echo "Installing yay..."
-mkdir -p $HOME/src
-cd $HOME/src/
-sudo pacman -S --noconfirm git fakeroot base-devel
-if [ ! -d "yay" ]; then
-  git clone https://aur.archlinux.org/yay.git
-fi
-cd yay/
-makepkg -si --noconfirm
+update_system() {
+	echo "Updating system..."
+	sudo pacman -Syu --noconfirm
+}
 
-echo "Installing dotfiles..."
-sudo pacman -S --noconfirm chezmoi
-chezmoi init --apply https://github.com/oligot/dotfiles.git
+install_yay() {
+	echo "Installing yay..."
+	mkdir -p "$HOME/src"
+	cd "$HOME/src" || exit
+	sudo pacman -S --noconfirm git fakeroot base-devel
+	if [[ ! -d "yay" ]]; then
+		git clone https://aur.archlinux.org/yay.git
+	fi
+	cd yay/ || exit
+	makepkg -si --noconfirm
+	cd "$pwd" || exit
+}
 
-echo "Create Vim directories..."
-mkdir -p $HOME/.vim/undo
-mkdir -p $HOME/.vim/swp
-mkdir -p $HOME/.vim/backup
+install_dotfiles() {
+  echo "Installing dotfiles..."
+  sudo pacman -S --noconfirm chezmoi bitwarden-cli jq
+  local bwstatus
+  bwstatus=$(bw status | jq -r .status)
+  if [[ $bwstatus == "unauthenticated" ]]; then
+    echo "Bitwarden: login"
+    bw login
+  fi
+  echo "Bitwarden: unlocking"
+  BW_SESSION=$(bw unlock --raw)
+  export BW_SESSION
+  chezmoi init --apply https://github.com/oligot/dotfiles.git
+}
 
-echo "Installing Tmux Plugin Manager..."
-if [ ! -d "$HOME/.tmux/plugins/tpm" ]; then
-    git clone https://github.com/tmux-plugins/tpm $HOME/.tmux/plugins/tpm
-fi
+install_tpm() {
+	echo "Installing Tmux Plugin Manager..."
+	if [[ ! -d "$HOME/.tmux/plugins/tpm" ]]; then
+		git clone https://github.com/tmux-plugins/tpm "$HOME/.tmux/plugins/tpm"
+	fi
+}
 
-echo "Installing additional softwares..."
-yay -S --noconfirm firefox evolution i3-wm gvim neovim python-pynvim zsh tmux tig thefuck exa bat xorg-xrandr jq ripgrep dunst polybar redshift rofi git-delta git-extras direnv nodejs-lts-gallium ranger
+install_soft() {
+	echo "Installing additional softwares..."
+	local packages
+  packages=$(<packages.txt)
+	yay -S --noconfirm "$packages"
+}
 
-echo "Installing additional bin..."
-mkdir -p $HOME/bin
-ln -sf $pwd/bin/t $HOME/bin/t
+install_bin() {
+	echo "Installing additional bin..."
+	mkdir -p "$HOME/bin"
+	ln -sf "$pwd/bin/t" "$HOME/bin/t"
+}
 
-echo "Installing Zplug..."
-if [ ! -d "$HOME/.zplug" ]; then
-  curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
-fi
+install_zplug() {
+	echo "Installing Zplug..."
+	if [[ ! -d "$HOME/.zplug" ]]; then
+		curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
+	fi
+}
+
+update_system
+install_yay
+install_dotfiles
+install_tpm
+install_soft
+install_bin
+install_zplug
