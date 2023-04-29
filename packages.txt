@@ -19,7 +19,6 @@ rofi
 git-delta
 git-extras
 direnv
-nodejs-lts-gallium
 ranger
 difftastic 
 vale-bin
@@ -29,4 +28,14 @@ pulseaudio-control
 i3lock-fancy-git
 ttf-font-awesome
 clipmenu
-lxappearance
+alacritty
+zoxide
+himalaya
+ttf-hack
+pam-u2f
+htop
+fd
+rofi-power-menu
+gitflow-avh
+evince
+python-pip
