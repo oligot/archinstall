@@ -28,16 +28,7 @@ install_yay() {
 
 install_dotfiles() {
   echo "Installing dotfiles..."
-  sudo pacman -S --noconfirm chezmoi bitwarden-cli jq
-  local bwstatus
-  bwstatus=$(bw status | jq -r .status)
-  if [[ $bwstatus == "unauthenticated" ]]; then
-    echo "Bitwarden: login"
-    bw login
-  fi
-  echo "Bitwarden: unlocking"
-  BW_SESSION=$(bw unlock --raw)
-  export BW_SESSION
+  sudo pacman -S --noconfirm chezmoi
   chezmoi init --apply https://github.com/oligot/dotfiles.git
 }
 
@@ -46,6 +37,11 @@ install_tpm() {
 	if [[ ! -d "$HOME/.tmux/plugins/tpm" ]]; then
 		git clone https://github.com/tmux-plugins/tpm "$HOME/.tmux/plugins/tpm"
 	fi
+}
+
+install_node() {
+	echo "Installing Node.js..."
+	curl -L https://bit.ly/n-install | bash
 }
 
 install_soft() {
@@ -72,6 +68,7 @@ update_system
 install_yay
 install_dotfiles
 install_tpm
+install_node
 install_soft
 install_bin
 install_zplug
