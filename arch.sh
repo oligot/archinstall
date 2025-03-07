@@ -41,20 +41,15 @@ install_tpm() {
 
 install_node() {
 	echo "Installing Node.js..."
-	curl -L https://bit.ly/n-install | bash
+	if [[ ! -d "$HOME/n" ]]; then
+		curl -L https://bit.ly/n-install | bash
+	fi
 }
 
 install_soft() {
 	echo "Installing additional softwares..."
 	local packages
-  packages=$(<packages.txt)
-	yay -S --noconfirm "$packages"
-}
-
-install_bin() {
-	echo "Installing additional bin..."
-	mkdir -p "$HOME/bin"
-	ln -sf "$pwd/bin/t" "$HOME/bin/t"
+	sudo pacman -S --noconfirm $(cat packages.txt | tr -d '\n')
 }
 
 install_zplug() {
@@ -70,5 +65,4 @@ install_dotfiles
 install_tpm
 install_node
 install_soft
-install_bin
 install_zplug

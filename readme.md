@@ -15,7 +15,7 @@ This will
 * install additional softwares
 
 You can then change your default shell to zsh with
+
 ```bash
 chsh -s /usr/bin/zsh
-
 ```
